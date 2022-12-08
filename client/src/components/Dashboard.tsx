@@ -25,8 +25,8 @@ export const Dashboard = () => {
                 <div className='mt-4 flex flex-col gap-4 relative text-white'>
                     {
                         menuOptions?.map((menu, index) => (
-                            <Link to={menu.link} key={index} className="flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-purple-600 rounded-md">
-                                <div>{React.createElement(menu.icon, { size: "20" })}</div>
+                            <Link to={menu.link} key={index} className="group flex  items-center text-sm gap-3.5 font-medium p-2 hover:bg-purple-600 rounded-md">
+                                <div >{React.createElement(menu.icon, { size: "20" })}</div>
                                 <h2
                                     style={{
                                         transitionDelay: `${index + 2}00ms`
@@ -34,7 +34,11 @@ export const Dashboard = () => {
                                     className={`wjitespace-pre duration-500 ${!isOpen && 'opacity-0 translate-x-28 overflow-hidden'}`}>
                                     {menu.name}
                                 </h2>
-
+                                <h2
+                                    className={` ${isOpen && "hidden"
+                                        } absolute left-48 bg-white  text-slate-700 whitespace-pre rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}>
+                                    {menu.name}
+                                </h2>
                             </Link>
                         ))
                     }
