@@ -1,13 +1,18 @@
-import * as C from './App.styles'
+import { GlobalRoutes } from "./routes/GlobalRoutes"
 
 
-const App = () => {
+import { Dashboard } from './components/Dashboard'
+export const App =() => {
+ 
 
-  return(
+  return (
+    
     <>
-   
+    <Dashboard />
     </>
-  );
+    
+   
+  )
 }
 
-export default App;
+
