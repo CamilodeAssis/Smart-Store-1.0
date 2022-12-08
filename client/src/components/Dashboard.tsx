@@ -5,7 +5,7 @@ import { Options } from '../helpers/data/options'
 import { OptionsType } from '../types/optionsType'
 import { GlobalRoutes } from "../routes/GlobalRoutes"
 
-import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
+import { HiMenuAlt3 } from 'react-icons/hi'
 
 
 export const Dashboard = () => {
@@ -20,7 +20,7 @@ export const Dashboard = () => {
         <section className="flex ">
             <div className={`bg-purple-700 min-h-screen ${isOpen ? 'w-72' : 'w-16'}  px-4 duration-500`}>
                 <div className="py-3 flex justify-end">
-                    <BsFillArrowLeftSquareFill size={26} className="cursor-pointer text-white" onClick={() => setIsOpen(!isOpen)} />
+                    <HiMenuAlt3 size={26} className="cursor-pointer text-white" onClick={() => setIsOpen(!isOpen)} />
                 </div>
                 <div className='mt-4 flex flex-col gap-4 relative text-white'>
                     {
