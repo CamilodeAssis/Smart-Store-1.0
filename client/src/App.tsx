@@ -1,17 +1,22 @@
+
 import { GlobalRoutes } from "./routes/GlobalRoutes"
+import { Menu } from './components/Menu'
+import { Footer } from './components/Footer'
 
 
-import { Dashboard } from './components/Dashboard'
-export const App =() => {
- 
+export const App = () => {
+
 
   return (
-    
     <>
-    <Dashboard />
+      <section className="flex ">
+        <Menu />
+        <div className='w-full'>
+          <GlobalRoutes />
+        </div>
+      </section>
+      <Footer />
     </>
-    
-   
   )
 }
 
