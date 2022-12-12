@@ -6,12 +6,12 @@ import { Dashboard } from "../components/Dashboard";
 
 
 export const GlobalRoutes = () => {
-    return (       
-            <Routes>
-                <Route path="/"  element={<Dashboard />}/>
-                <Route path="/login"  element={<Login />}/>
-                <Route path="/user"  element={<User />}/>
-            </Routes>        
+    return (
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/user" element={<User />} />
+        </Routes>
     );
 
 }

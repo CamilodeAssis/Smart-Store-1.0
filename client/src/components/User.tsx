@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { NavBar } from '../components/NavBar'
-
+import { Menu } from '../components/Menu'
 
 export const User = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,7 +12,10 @@ export const User = () => {
 
     return (
         <>
-            <NavBar />
+         <section className="flex ">
+        <Menu />
+        <div className='w-full'>
+        <NavBar />
             <div className="flex justify-center items-center h-screen bg-grayBG w-full">
 
                 <div className="flex w-auto h-auto flex-col mt-24 items-center bg-white rounded p-3" >
@@ -43,6 +46,11 @@ export const User = () => {
 
 
             </div>
+          
+
+        </div>
+      </section>
+            
         </>
     );
 }
