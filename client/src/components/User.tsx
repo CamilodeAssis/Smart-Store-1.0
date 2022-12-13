@@ -1,56 +1,29 @@
-import { useState } from "react";
-import { useForm } from 'react-hook-form'
-import { NavBar } from '../components/NavBar'
 import { Menu } from '../components/Menu'
+import { NavBar } from '../components/NavBar'
+import { Link } from 'react-router-dom'
+
 
 export const User = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-
-    const [singupInfo, setSingupInfo] = useState({});
-
-
-
     return (
-        <>
-         <section className="flex ">
-        <Menu />
-        <div className='w-full'>
-        <NavBar />
-            <div className="flex justify-center items-center h-screen bg-grayBG w-full">
+        <section className="flex ">
+            <Menu />
+            <div className='w-full'>
+                <NavBar />
+                <div className="flex flex-col bg-grayBG min-h-screen w-full p-10 gap-6" >
+                    <div className=" flex justify-between  gap-6 ">
+                        <div className="w-full ">
+                            <div className=" grid grid-cols-3 grid-flow-row gap-6" >
+                                <Link to='/user/register'>
+                                    <div className="w-auto h-32 bg-green-500 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl hover:bg-green-400 ">Cadrastrar usuarios</div>
+                                </Link>
+                                <div className="w-auto h-32 bg-white drop-shadow rounded">Consultar Usuarios</div>
+                                <div className="w-auto h-32 bg-white drop-shadow rounded">Editar Usuarios</div>
 
-                <div className="flex w-auto h-auto flex-col mt-24 items-center bg-white rounded p-3" >
-
-                    <div>
-                        <h1 className="font-bold mb-2">Página de Cadastro</h1>
+                            </div>
+                        </div>
                     </div>
-
-                    {/* AQUI VAI SER CRIADO COM HEACK HOOK FORM E YUP */}
-                    <form className="flex flex-col"   >
-                        <label>Nome Completo</label>
-                        <input type="text" name="name" className="border mb-2" />
-                        <label>Mátricula</label>
-                        <input type="text" name="entry" className="border mb-2" />
-                        <label>Email</label>
-                        <input type="text" name="email" autoComplete="current-email" className="border mb-2" />
-                        <label>Nome de usuário</label>
-                        <input type="text" name="user" autoComplete="current-user" className="border mb-2" />
-                        <label>Senha</label>
-                        <input type="password" name="passoword" autoComplete="current-password" className="border mb-2" />
-                        <label>Confirme sua senha</label>
-                        <input type="password" autoComplete="current-password" className="border mb-2" />
-                        <button type="submit" className="border mb-2">Cadastrar</button>
-                    </form>
-
-
                 </div>
-
-
             </div>
-          
-
-        </div>
-      </section>
-            
-        </>
+        </section>
     );
 }
