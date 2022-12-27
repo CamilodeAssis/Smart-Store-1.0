@@ -8,12 +8,12 @@ module.exports = {
   eAdmin: async function (req, res, next) {
     var token = req.headers.authorization.split(' ')[1];
    
-    console.log('Token ->', token);
+    // console.log('Token ->', token);
 
     if (!token) {
       return res.status(400).json({
         error: true,
-        message: "Failed: must be logged in to access the page. token required",
+        message: "Failed: must be logged in to access the page.",
       });
     }
 
@@ -23,10 +23,10 @@ module.exports = {
       
       return next();
     } catch (err) {
-      console.log('erro aqui', err);
+      // console.log('erro aqui', err);
       return res.status(400).json({
         error: true,
-        message: "Failed: must be logged in to access the page. token invalid",
+        message: "Failed: must be logged in to access the page.",
       });
 
     }

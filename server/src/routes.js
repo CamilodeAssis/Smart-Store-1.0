@@ -8,9 +8,9 @@ const routes = express.Router();
 
 const {eAdmin} = require('./middlewares/auth')
 
-routes.post('/users', UserController.store)
-routes.post('/users/login', UserController.login)
-routes.get('/users', UserController.index)
+routes.post('/users',  UserController.store)
+routes.post('/login', UserController.login)
+routes.get('/users',  UserController.index)
 routes.get('/', eAdmin, UserController.listar)
 
 routes.post('/users/:user_id/addresses', AdressController.store)

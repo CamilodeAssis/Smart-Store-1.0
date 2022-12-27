@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import { Options } from '../helpers/data/options'
+import { Options } from '../data/options'
 import { OptionsType } from '../types/optionsType'
 import { HiMenuAlt3 } from 'react-icons/hi'
 
