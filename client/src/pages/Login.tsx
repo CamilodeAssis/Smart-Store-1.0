@@ -1,32 +1,35 @@
-import { useState } from 'react';
-import { api } from '../data/api'
-import { doLogin } from '../helpers/AuthHeandler'
+import { useState, useContext, useEffect } from 'react';
+
+import { AuthContext } from '../contexts/auth';
 
 
 export const Login = () => {
 
+    const { authenticated, doLogin, error} = useContext(AuthContext);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState(false);
-    const [error, setError] = useState('');
-
-    console.log(password, email)
+      
     const handleSubmit = async () => {
         setDisabled(true);
-        const json = await api.login({ email, password }); 
-          
-        if (json.error) {
-            setError(json.error)
-        } else {
-            doLogin(json.token);
-            window.location.href = '/';
-        }
+        doLogin(email, password);
         setDisabled(false);
+    }
+
+    useEffect( () => {
+        document.addEventListener('keydown', enterSubmit, true);
+    }, [])
+
+    const enterSubmit = (e: KeyboardEvent) => {
+        if (e.key === 'Enter'){
+            handleSubmit();
+        } 
     }
 
     
     return (
-        <div className='bg-purple-700 flex  justify-center items-center h-screen'>
+        <div className='bg-blue-800 flex  justify-center items-center h-screen'>
             <div className='flex flex-col justify-between items-center gap-24  w-2/3 '>
                 <div className='w-auto text-white text-center flex flex-col gap-9'>
                     <h1 className='font-bold text-2xl'>Sistema </h1>
@@ -51,12 +54,10 @@ export const Login = () => {
                             className='border rounded w-4/5 h-10 focus:outline-none' />
                     </div>
 
-                    <button onClick={handleSubmit} disabled={disabled} className='bg-purple-700 text-white p-1 rounded w-2/5 font-bold text-2xl hover:bg-purple-600'>Entrar</button>
+                    <button  onClick={handleSubmit} disabled={disabled} className='bg-blue-800 text-white p-1 rounded w-2/5 font-bold text-2xl hover:bg-blue-600'>Entrar</button>
                 </div>
 
-                {error &&
-                    <div>{error}</div>
-                }
+                <p>{error}</p>
 
             </div>
         </div>

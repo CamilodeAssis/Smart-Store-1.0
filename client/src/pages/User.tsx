@@ -5,12 +5,14 @@ import { useState } from 'react'
 
 
 export const User = () => {
-    
+    const color = '#db2777'
+    const desc = 'User Settings';
+   
     return (
         <section className="flex ">
             <Menu />
             <div className='w-full'>
-                <NavBar />
+                <NavBar color={color} desc={desc}/>
                 <div className="flex flex-col  bg-grayBG min-h-screen w-full p-10 gap-6" >
                     <div className=" flex justify-between  gap-6 ">
                         <div className="w-full ">

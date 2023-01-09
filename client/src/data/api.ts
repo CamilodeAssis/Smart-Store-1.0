@@ -2,6 +2,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 const BASE = 'http://localhost:3333'
 import { DataType } from '../types/dataType'
+import { DataProductType} from '../types/dataProductType'
 import { BodyTypes } from '../types/bodyType'
 
 
@@ -48,6 +49,16 @@ export const api = {
             username,
             email,
             password
+        });
+
+    },
+    postProducts: async ({ name, description, value, quantity, image }: DataProductType) => {
+        let response = await axios.post(`${BASE}/users`, {
+            name,
+            description,
+            value,
+            quantity,
+            image
         });
 
     },

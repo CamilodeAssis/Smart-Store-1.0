@@ -1,7 +1,10 @@
 import { NavBar } from "../components/NavBar";
 import { Menu } from '../components/Menu'
+import { RxDashboard } from 'react-icons/rx'
 export const Dashboard = () => {
 
+const color = '#1E40AF';
+const desc = 'Dashboard';
 
 
   return (
@@ -10,7 +13,7 @@ export const Dashboard = () => {
       <section className="flex ">
         <Menu />
         <div className='w-full'>
-          <NavBar />
+          <NavBar color={color} desc={desc} />
           <div className="flex flex-col bg-grayBG min-h-screen w-full p-10 gap-12" >
 
             <div className=" flex justify-between gap-12 ">

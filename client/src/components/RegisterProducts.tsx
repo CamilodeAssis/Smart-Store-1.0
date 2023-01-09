@@ -1,29 +1,25 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { object, ref, string } from "yup";
+import { mixed, number, object, ref, string } from "yup";
 
 import { NavBar } from "./NavBar";
 import { Menu } from "./Menu";
 import { api } from "../data/api";
 
-import { GiArchiveRegister } from "react-icons/gi";
+import { ImBoxAdd } from "react-icons/im";
 
 const schema = object({
   name: string()
     .required("Campo obrigatório")
     .min(3, "Nome deve conter 3 letras ou mais"),
-  username: string().required("Campo obrigatório"),
-  email: string().required("Campo obrigatório"),
-  password: string()
-    .required("Campo obrigatório")
-    .min(8, "A senha deve ter no minimo 8 caracteres"),
-  confirmPassword: string()
-    .required("Campo obrigatório")
-    .oneOf([ref("password"), null], "As senhas devem ser iguais"),
+  description: string().required("Campo obrigatório"),
+  value: number().min(1, "O valor deve ser maior que 0").required('Campo obrigatório').typeError('Campo obrigatório'),
+  quantity: number().min(1, "O valor deve ser maior que 0").required('Campo obrigatório').typeError('Campo obrigatório'),
+  image: mixed().required("Arquivo obrigatório")   
 });
 
-export const RegisterUsers = () => {
-  const desc = "Register users";
+export const RegisterProducts = () => {
+  const desc = "Register Products";
   const color = '#22C55E'
 
   const {
@@ -32,13 +28,15 @@ export const RegisterUsers = () => {
     watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+  
 
   const handleClickSubimit = async (data: any) => {
-    const post = await api.postUsers({
+    const post = await api.postProducts({
       name: data.name,
-      username: data.username,
-      email: data.email,
-      password: data.password,
+      description: data.description,
+      value: data.value,
+      quantity: data.quantity,
+      image: data.image
     });
   };
 
@@ -53,8 +51,8 @@ export const RegisterUsers = () => {
               
                 <div className="mb-6">
                   <div className="flex justify-center items-center flex-col gap-3">
-                    <GiArchiveRegister size={60} className="text-green-500" />
-                    <h1 className="font-bold text-2xl">Registre um usuário</h1>
+                    <ImBoxAdd size={60} className="text-green-500" />
+                    <h1 className="font-bold text-2xl">Registre um Produto</h1>
                   </div>
                 </div>
 
@@ -63,7 +61,7 @@ export const RegisterUsers = () => {
                   onSubmit={handleSubmit(handleClickSubimit)}
                 >
                   <>
-                    <label className=" ">Nome Completo</label>
+                    <label className=" ">Nome</label>
                     <input
                       type="text"
                       className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 "
@@ -74,50 +72,52 @@ export const RegisterUsers = () => {
                     </span>
                   </>
                   <>
-                    <label>Nome de usuário</label>
+                    <label>Descrição</label>
                     <input
                       type="text"
                       className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-                      {...register("username")}
+                      {...register("description")}
                     />
                     <span className="text-red-500 my-1 text-xs">
-                      <>{errors?.username?.message}</>
+                      <>{errors?.description?.message}</>
                     </span>
                   </>
                   <>
-                    <label>Email</label>
+                    <label>Valor</label>
                     <input
-                      type="email"
+                      type="number"
+                      defaultValue={1}
                       autoComplete="current-email"
                       className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-                      {...register("email")}
+                      {...register("value")}
                     />
                     <span className="text-red-500 my-1 text-xs">
-                      <>{errors?.email?.message}</>
+                      <>{errors?.value?.message}</>
                     </span>
                   </>
                   <>
-                    <label>Senha</label>
+                    <label>Quantidade</label>
                     <input
-                      type="password"
-                      {...register("password")}
+                      type="number"
+                      defaultValue={1}
+                      {...register("quantity")}
                       autoComplete="current-password"
                       className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
                     />
                     <span className="text-red-500 my-1 text-xs">
-                      <>{errors?.password?.message}</>
+                      <>{errors?.quantity?.message}</>
                     </span>
                   </>
                   <>
-                    <label>Confirme a senha</label>
+                    <label>Imagem</label>
                     <input
-                      type="password"
+                      type="file"
                       autoComplete="current-password"
                       className="border rounded-md drop-shadow h-8 focus:outline-none mb-6"
-                      {...register("confirmPassword")}
+                      {...register("image")}
                     />
                     <span className="text-red-500 my-1 text-xs">
-                      <>{errors?.confirmPassword?.message}</>
+                      <>{errors?.image?.message}</>
                     </span>
                   </>
                   <div className="flex justify-center items-center">
