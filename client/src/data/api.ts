@@ -5,6 +5,10 @@ import { DataType } from '../types/dataType'
 import { DataProductType} from '../types/dataProductType'
 import { BodyTypes } from '../types/bodyType'
 
+export default axios.create({
+    baseURL: 'http://localhost:3333'
+});
+
 
 const apiFetchPost = async (endpoint: string, body: BodyTypes) => {
 
@@ -52,16 +56,7 @@ export const api = {
         });
 
     },
-    postProducts: async ({ name, description, value, quantity, image }: DataProductType) => {
-        let response = await axios.post(`${BASE}/users`, {
-            name,
-            description,
-            value,
-            quantity,
-            image
-        });
-
-    },
+    
 
     login: async ({ email, password }: BodyTypes) => {
         let json = await apiFetchPost(`/login`, {

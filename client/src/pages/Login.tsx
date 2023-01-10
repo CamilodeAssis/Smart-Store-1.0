@@ -17,15 +17,16 @@ export const Login = () => {
         setDisabled(false);
     }
 
-    useEffect( () => {
-        document.addEventListener('keydown', enterSubmit, true);
-    }, [])
+    // useEffect( () => {
+    //     document.addEventListener('keydown', enterSubmit, true);
+    // }, [])
 
-    const enterSubmit = (e: KeyboardEvent) => {
-        if (e.key === 'Enter'){
-            handleSubmit();
-        } 
-    }
+    // const enterSubmit = (e: KeyboardEvent) => {
+        
+    //     if (e.key === 'Enter'){
+    //         handleSubmit();
+    //     } 
+    // }
 
     
     return (
