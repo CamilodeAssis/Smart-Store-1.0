@@ -8,6 +8,7 @@ import { User } from "../pages/User";
 import { ListUsers } from "../components/ListUsers";
 import { Product } from "../pages/Product";
 import {RegisterProducts} from '../components/RegisterProducts'
+import {ListProducts} from '../components/ListProducts'
 
 import { RequireAuth } from "../helpers/RequireAuth";
 
@@ -81,7 +82,7 @@ export const GlobalRoutes = () => {
             path="/product/consult"
             element={
               <RequireAuth>
-                <Product />
+                <ListProducts/>
               </RequireAuth>
             }
           />

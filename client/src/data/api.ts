@@ -47,16 +47,23 @@ export const api = {
         return response.data;
     },
 
-    postUsers: async ({ name, username, email, password }: DataType) => {
-        let response = await axios.post(`${BASE}/users`, {
-            name,
-            username,
-            email,
-            password
-        });
+    // postUsers: async ({ name, username, email, password }: DataType) => {
+    //     let response = await axios.post(`${BASE}/users`, {
+    //         name,
+    //         username,
+    //         email,
+    //         password
+    //     });
 
-    },
+    // },
     
+
+    getProducts: async () => {
+        let response = await axios.get(`${BASE}/products`);
+        return response.data;
+    },
+
+
 
     login: async ({ email, password }: BodyTypes) => {
         let json = await apiFetchPost(`/login`, {

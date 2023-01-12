@@ -6,7 +6,6 @@ class Product extends Model {
             name: DataTypes.STRING,
             description: DataTypes.STRING,
             value: DataTypes.NUMBER,
-            quantity: DataTypes.NUMBER,
             image: DataTypes.STRING
         }, {
             sequelize

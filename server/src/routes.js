@@ -9,9 +9,9 @@ const routes = express.Router();
 const {eAdmin} = require('./middlewares/auth');
 
 const uploadimage = require('./middlewares/uploadimage');
+const imageuser = require('./middlewares/imageuser');
 
-
-routes.post('/users',  UserController.store)
+routes.post('/users',imageuser.single('image'),  UserController.store)
 routes.post('/login', UserController.login)
 routes.get('/users',  UserController.index)
 routes.get('/', eAdmin, UserController.listar)
