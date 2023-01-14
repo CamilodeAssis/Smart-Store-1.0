@@ -73,6 +73,7 @@ module.exports = {
             error: false,
             message: "successful",
             logged_in_user_id: user.id,
+            logged_in_user_name: user.name,
             token: token,
           });
         } else {

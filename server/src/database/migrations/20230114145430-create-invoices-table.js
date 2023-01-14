@@ -3,36 +3,48 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("products", {
+    await queryInterface.createTable("invoices", {
+
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false,
+
+      },
+      user_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: 'users', key: 'id'},
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+
+      invoice_number: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      cnpj: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      date: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      description: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      
-      value: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
-      },
-      totalAmount: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
-        defaultValue: 0,
-      },
       quantity: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      image: {
+      value: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      username: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -48,6 +60,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("products");
+    await queryInterface.dropTable("invoices");
   },
 };

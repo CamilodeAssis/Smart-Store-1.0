@@ -55,8 +55,6 @@ module.exports = {
         allowNull: false,
       },
 
-
-
     });
 
   },

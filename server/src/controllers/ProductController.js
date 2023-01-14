@@ -1,11 +1,16 @@
-const { and } = require("sequelize");
+
+const Sequelize = require('sequelize');
+
 const Product = require("../models/Product");
+
+    
+const Op = Sequelize.Op;  
 
 module.exports = {
   async store(req, res) {
-    const { name, description, value } = req.body;
+    const { name, description, valuePerUnit, value } = req.body;
 
-    const floatValue = parseFloat(value);
+    const convertValue = parseInt(value);
 
     if (req.body) {
       await Product.findOne({ where: { name } }).then(async (produto) => {
@@ -14,7 +19,8 @@ module.exports = {
             await Product.create({
               name,
               description,
-              value: floatValue,
+              quantity: 0,
+              value: convertValue,
               image: req.file.filename,
             });
 
@@ -38,7 +44,17 @@ module.exports = {
     }
   },
   async index(req, res) {
-    await Product.findAll().then((products) => {
+    
+    const query = req.query.name
+
+    await Product.findAll({
+      where:{
+        name: {
+          [Op.like]: `%${query}%`
+        }
+      }
+    }).then((products) => {
+      
       return res.json({
         erro: false,
         products,
