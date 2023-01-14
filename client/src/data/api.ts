@@ -1,9 +1,11 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 const BASE = 'http://localhost:3333'
+
 import { DataType } from '../types/dataType'
-import { DataProductType} from '../types/dataProductType'
+import { DataProductType } from '../types/dataProductType'
 import { BodyTypes } from '../types/bodyType'
+import { DataInvoiceType } from '../types/dataInvoiceType'
 
 export default axios.create({
     baseURL: 'http://localhost:3333'
@@ -47,19 +49,21 @@ export const api = {
         return response.data;
     },
 
-    // postUsers: async ({ name, username, email, password }: DataType) => {
-    //     let response = await axios.post(`${BASE}/users`, {
-    //         name,
-    //         username,
-    //         email,
-    //         password
-    //     });
+    getProductByQuery: async (query: string) => {
+        let response = await axios.get(`${BASE}/products${query}`);
+        return response.data;
+    },
 
-    // },
-    
-
-    getProducts: async () => {
-        let response = await axios.get(`${BASE}/products`);
+    registerProducts: async ({ userId, invoice_number, cnpj, date, name, quantity, value, username }: DataInvoiceType) => {
+        let response = await axios.post(`${BASE}/users/${userId}/invoices`, {
+            invoice_number,
+            cnpj,
+            date,
+            name,
+            quantity,
+            value,
+            username
+        });
         return response.data;
     },
 

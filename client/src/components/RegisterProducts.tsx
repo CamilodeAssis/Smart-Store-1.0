@@ -41,6 +41,7 @@ export const RegisterProducts = () => {
     handleSubmit,
     watch,
     formState: { errors },
+    reset
   } = useForm({ resolver: yupResolver(schema) });
 
   const handleClickSubimit = async (data: any) => {
@@ -80,6 +81,9 @@ export const RegisterProducts = () => {
           });
         }
       });
+
+      reset();
+      setImage('')
   };
 
   return (

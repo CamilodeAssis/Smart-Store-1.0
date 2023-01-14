@@ -7,12 +7,14 @@ import { Dashboard } from "../pages/Dashboard";
 import { User } from "../pages/User";
 import { ListUsers } from "../components/ListUsers";
 import { Product } from "../pages/Product";
-import {RegisterProducts} from '../components/RegisterProducts'
-import {ListProducts} from '../components/ListProducts'
+import { RegisterProducts } from "../components/RegisterProducts";
+import { ListProducts } from "../components/ListProducts";
+import { EditProduct } from "../components/editProduct/EditProduct";
 
 import { RequireAuth } from "../helpers/RequireAuth";
 
 import { AuthProvider, AuthContext } from "../contexts/auth";
+import { AddQt } from "../components/editProduct/AddQt";
 
 export const GlobalRoutes = () => {
   return (
@@ -61,7 +63,6 @@ export const GlobalRoutes = () => {
             }
           />
 
-
           <Route
             path="/product"
             element={
@@ -74,7 +75,7 @@ export const GlobalRoutes = () => {
             path="/product/register"
             element={
               <RequireAuth>
-                <RegisterProducts/>
+                <RegisterProducts />
               </RequireAuth>
             }
           />
@@ -82,7 +83,7 @@ export const GlobalRoutes = () => {
             path="/product/consult"
             element={
               <RequireAuth>
-                <ListProducts/>
+                <ListProducts />
               </RequireAuth>
             }
           />
@@ -90,7 +91,15 @@ export const GlobalRoutes = () => {
             path="/product/edit"
             element={
               <RequireAuth>
-                <Product />
+                <EditProduct />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/product/edit/add"
+            element={
+              <RequireAuth>
+                <AddQt />
               </RequireAuth>
             }
           />

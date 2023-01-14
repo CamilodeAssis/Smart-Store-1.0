@@ -86,114 +86,13 @@ export const RegisterUsers = () => {
   };
 
   return (
-    // <>
-    //   <section className="flex ">
-    //     <Menu />
-    //     <div className="w-full">
-    //       <NavBar color={color} desc={desc} />
-    //       <div className="flex  justify-center items-center h-auto  bg-grayBG w-full p-12">
-    //         <div className="flex bg-white w-2/6 flex-col items-center h-auto rounded-md p-6">
-    //           <div className="mb-6">
-    //             <div className="flex justify-center items-center flex-col gap-3">
-    //               <GiArchiveRegister size={60} className="text-green-500" />
-    //               <h1 className="font-bold text-2xl">Registre um usuário</h1>
-    //             </div>
-    //           </div>
 
-    //           <form
-    //             className="flex flex-col w-4/5 "
-    //             encType="multipart/form-data"
-    //             onSubmit={handleSubmit(handleClickSubimit)}
-    //           >
-    //             <label className=" ">Nome completo</label>
-    //             <input
-    //               type="text"
-    //               className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 "
-    //               {...register("name")}
-    //             />
-    //             <span className="text-red-500 my-1 text-xs">
-    //               <>{errors?.name?.message}</>
-    //             </span>
-
-    //             <label>Nome de usuário</label>
-    //             <input
-    //               type="text"
-    //               className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-    //               {...register("username")}
-    //             />
-    //             <span className="text-red-500 my-1 text-xs">
-    //               <>{errors?.username?.message}</>
-    //             </span>
-
-    //             <label>Email</label>
-    //             <input
-    //               type="string"
-    //               // defaultValue={1}
-    //               autoComplete="current-email"
-    //               className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-    //               {...register("email")}
-    //             />
-    //             <span className="text-red-500 my-1 text-xs">
-    //               <>{errors?.email?.message}</>
-    //             </span>
-
-    //             <label>Senha</label>
-    //             <input
-    //               type="password"
-    //               // defaultValue={1}
-    //               {...register("password")}
-    //               autoComplete="current-password"
-    //               className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-    //             />
-    //             <span className="text-red-500 my-1 text-xs">
-    //               <>{errors?.password?.message}</>
-    //             </span>
-    //             <label>Confirme sua senha</label>
-    //             <input
-    //               type="password"
-    //               // defaultValue={1}
-    //               {...register("confirmpassword")}
-    //               autoComplete="current-password"
-    //               className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-    //             />
-    //             <span className="text-red-500 my-1 text-xs">
-    //               <>{errors?.confirmpassword?.message}</>
-    //             </span>
-    //             <label>Foto do usuário</label>
-
-    //             <input
-    //               type="file"
-    //               className="border rounded-md drop-shadow h-8 focus:outline-none mb-6"
-    //               name="image"
-    //               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-    //                 if (!e.target.files) return;
-
-    //                 setImage(e.target.files[0]);
-    //               }}
-    //             />
-
-    //             <div className="flex justify-center items-center">
-    //               <button
-    //                 type="submit"
-    //                 className=" border text-white text-xl rounded-md drop-shadow bg-green-500 hover:bg-green-300 w-4/5 p-2"
-    //               >
-    //                 Cadastrar
-    //               </button>
-    //               <br />
-    //             </div>
-    //           </form>
-
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </section>
-    // </>
     <>
       <section className="flex ">
         <Menu />
         <div className="w-full">
           <NavBar color={color} desc={desc} />
-          <div className="flex  justify-center items-center h-screen bg-grayBG w-full p-12">
+          <div className="flex  justify-center items-center h-auto bg-grayBG w-full p-12">
             <div className="flex bg-white w-2/6 flex-col items-center  rounded-md p-6">
               <div className="mb-6">
                 <div className="flex justify-center items-center flex-col gap-3">

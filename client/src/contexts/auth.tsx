@@ -20,23 +20,28 @@ interface AuthContextProps {
   user: any;
   loading: boolean;
   error: any;
+
 }
 
 export const AuthContext = createContext<AuthContextProps>(
-    {} as AuthContextProps
+  {} as AuthContextProps
 );
 
 export const AuthProvider = ({ children }: Props) => {
+
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
+
+
+
   useEffect(() => {
     const recoveredUser = Cookies.get("user");
 
     if (recoveredUser) {
-      setUser(recoveredUser);
+      setUser(JSON.parse(recoveredUser));
     }
     setLoading(false);
   }, []);
@@ -46,8 +51,8 @@ export const AuthProvider = ({ children }: Props) => {
     date.setTime(date.getTime() + 600 * 1000); //86400
 
     const user = await api.login({ email, password });
-    Cookies.set("user", user.token, { expires: date });
-
+    Cookies.set("user", JSON.stringify(user), { expires: date });
+    
     if (user.error) {
       setError(user.error);
     } else {
@@ -57,14 +62,11 @@ export const AuthProvider = ({ children }: Props) => {
   };
 
   const doLogout = (state: boolean) => {
-
     if (state) {
       Cookies.remove("user");
-    setUser("");
-    navigate("/login");
-    } 
-      
-    
+      setUser("");
+      navigate("/login");
+    }
   };
 
   const contextValue: AuthContextProps = {
@@ -74,10 +76,10 @@ export const AuthProvider = ({ children }: Props) => {
     error,
     doLogin,
     doLogout,
+
   };
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
-  
 };
