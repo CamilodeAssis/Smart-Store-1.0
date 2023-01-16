@@ -126,7 +126,7 @@ export const RegisterProducts = () => {
                   <>{errors?.description?.message}</>
                 </span>
 
-                <label>Valor</label>
+                <label>Valor da unidade</label>
                 <input
                   type="string"
                   // defaultValue={1}

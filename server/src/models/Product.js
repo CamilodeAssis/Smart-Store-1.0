@@ -7,6 +7,7 @@ class Product extends Model {
             description: DataTypes.STRING,
             quantity: DataTypes.INTEGER,
             value: DataTypes.NUMBER,
+            amount_value: DataTypes.NUMBER,
             image: DataTypes.STRING
         }, {
             sequelize

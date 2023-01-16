@@ -1,6 +1,6 @@
 const Invoice = require("../models/Invoice");
 const User = require("../models/User");
-const Product = require("../models/product");
+const Product = require("../models/Product");
 
 module.exports = {
   async index(req, res) {
@@ -13,33 +13,50 @@ module.exports = {
   },
 
   async store(req, res) {
-    console.log('aquiiiiiiiiiii', req.body)
     const { user_id } = req.params;
     const { invoice_number, cnpj, date, name, quantity, value, username } =
       req.body;
-      
-      
-    const user = await User.findByPk(user_id);
 
-    
+    const user = await User.findByPk(user_id);
 
     if (!user) {
       return res.status(400).json({ error: "Usuário não encontrado" });
     }
-  const convertValue = parseInt(value)
-    
-    const invoice = await Invoice.create({
-      invoice_number,
-      cnpj,
-      date,
-      name,
-      quantity,
-      value: convertValue,
-      username,
-      user_id,
-      
-    });
 
-    return res.json(invoice);
+    const convertValue = parseInt(value);
+
+    await Product.findOne({
+      where: {
+        name,
+      },
+    }).then ( async (product) => {    
+        if (product){
+          await Invoice.create({
+            invoice_number,
+            cnpj,
+            date,
+            name,
+            quantity,
+            value: convertValue,
+            username,
+            user_id,
+          });
+
+          product.quantity += quantity;
+          product.amount_value +=  product.quantity * product.value;
+          await product.save();
+          
+          return res.json({
+            error: false,
+            message: "Nota cadastrada com sucesso",
+          });
+        }else{ 
+          return res.json({
+            error: true,
+            message: "Ocorreu um erro tentar cadastrar a nota no produto selecionado",
+          });
+        }
+    } );
+
   },
 };

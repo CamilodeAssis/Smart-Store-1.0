@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }: Props) => {
 
 
 
-
   useEffect(() => {
     const recoveredUser = Cookies.get("user");
 

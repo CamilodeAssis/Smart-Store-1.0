@@ -25,9 +25,9 @@ const schema = object({
     .min(3, "Nome deve conter 3 letras ou mais"),
   date: date()
     .default(() => new Date())
-    .required("Campo obrigatório"),
-  name: string()
+    .required("Campo obrigatório")
     .typeError("Campo obrigatório"),
+  name: string().typeError("Campo obrigatório"),
   quantity: number()
     .min(1.0, "O valor deve ser maior que 0")
     .required("Campo obrigatório")
@@ -68,7 +68,6 @@ export const EditProduct = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const handleClickSubimit = async (data: any) => {
-     
     const response = await api.registerProducts({
       userId,
       invoice_number: data.invoice_number,
@@ -79,6 +78,21 @@ export const EditProduct = () => {
       value: data.value,
       username: user.logged_in_user_name,
     });
+
+    if (response) {
+      setStatus({
+        type: "success",
+        message: response.message,
+        error: response.error,
+      });
+    } else {
+      setStatus({
+        type: "error",
+        message: "Problema com o servidor, tente novamente mais tarde",
+        error: true,
+      });
+    }
+    reset();
   };
 
   const loadProduct = async () => {
@@ -86,8 +100,9 @@ export const EditProduct = () => {
     if (!response) {
       <p>carregando</p>;
     }
-    
-    return setData(response.products), setSelectedValue(response.products[0].name);
+    return (
+      setData(response.products), setSelectedValue(response.products[0].name)
+    );
   };
 
   useEffect(() => {
@@ -192,13 +207,14 @@ export const EditProduct = () => {
                   type="string"
                   value={user.logged_in_user_name}
                   disabled={true}
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-6"
                   {...register("username")}
                 />
                 <span className="text-red-500 my-1 text-xs">
                   <>{errors?.username?.message}</>
                 </span>
 
+                
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
@@ -209,7 +225,7 @@ export const EditProduct = () => {
                   <br />
                 </div>
               </form>
-              {status.type === "success" && status.error === false ? (
+              {status.type === "success" ? (
                 <p className=" text-green-500 mt-3 text-center">
                   {status.message}
                 </p>
