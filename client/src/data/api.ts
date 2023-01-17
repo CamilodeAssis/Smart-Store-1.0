@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
-const BASE = 'https://15.229.118.131:3333'
+const BASE = 'http://15.229.118.131:3333'
 
 import { DataType } from '../types/dataType'
 import { DataProductType } from '../types/dataProductType'
@@ -8,7 +8,7 @@ import { BodyTypes } from '../types/bodyType'
 import { DataInvoiceType } from '../types/dataInvoiceType'
 
 export default axios.create({
-    baseURL: 'https://15.229.118.131:3333'
+    baseURL: 'http://15.229.118.131:3333'
 });
 
 
