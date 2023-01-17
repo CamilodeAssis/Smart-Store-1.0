@@ -27,5 +27,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(3333, () => {
-  console.log("Server is listening on http://localhost:3333");
+  console.log("Server is listening http://localhost:3333 ");
 });
