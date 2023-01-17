@@ -41,6 +41,7 @@ export const RegisterUsers = () => {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -53,7 +54,7 @@ export const RegisterUsers = () => {
     formData.append("password", data.password);
     formData.append("image", image);
 
-    console.log(formData);
+    
     const headers = {
       headers: {
         "Content-Type": "multipart/form-data; boundary=MyBoundary",
@@ -83,6 +84,7 @@ export const RegisterUsers = () => {
           });
         }
       });
+     reset();
   };
 
   return (

@@ -9,6 +9,7 @@ type Props = {
 export const RequireAuth = ({ children }: Props) => {
 
     const { authenticated, loading } = useContext(AuthContext);
+    
 
     if(loading) {
         return <div>Loading...</div>;
