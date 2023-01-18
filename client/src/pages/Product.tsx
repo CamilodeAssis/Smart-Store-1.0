@@ -28,7 +28,7 @@ export const Product = () => {
                 <Link to="/product/consult">
                   <div className="w-auto h-32 bg-blue-500 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl hover:bg-blue-400 gap-10 p-6 ">
                     <FaSearch className="w-16 h-16" />
-                    <span>Consultar estoque</span>
+                    <span>Consultar </span>
                   </div>
                 </Link>
                 <Link to="/product/edit">

@@ -10,7 +10,7 @@ export const Options = [
     { state: false, name: "Dashboard", link: "/", icon: RxDashboard },
     { state: false, name: "User", link: "/user", icon: AiOutlineUser },
     { state: false, name: "Product", link: "/product", icon: BsBoxSeam },
-    { state: false, name: "Sale", link: "/sale", icon: FiShoppingBag },
+    { state: false, name: "Sale", link: "/sales", icon: FiShoppingBag },
     { state: false, name: "Settings", link: "/settings", icon: AiOutlineSetting },
     { state: true, name: "Logout", link: "", icon: AiOutlineLogout },
 

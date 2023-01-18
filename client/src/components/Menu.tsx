@@ -15,7 +15,7 @@ export const Menu = () => {
 
   return (
     <div
-      className={`bg-blue-800 min-h-screen ${
+      className={`bg-blue-800  min-h-screen ${
         isOpen ? "w-72" : "w-16"
       }  px-4 duration-500`}
     >

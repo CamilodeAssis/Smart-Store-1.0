@@ -7,14 +7,15 @@ import { Dashboard } from "../pages/Dashboard";
 import { User } from "../pages/User";
 import { ListUsers } from "../components/ListUsers";
 import { Product } from "../pages/Product";
-import { RegisterProducts } from "../components/RegisterProducts";
-import { ListProducts } from "../components/ListProducts";
-import { EditProduct } from "../components/editProduct/EditProduct";
+import { RegisterProducts } from "../components/Product/RegisterProducts";
+import { ListProducts } from "../components/Product/ListProducts";
+import { EditProduct } from "../components/Product/EditProduct";
+import {Sales} from '../pages/Sales'
 
 import { RequireAuth } from "../helpers/RequireAuth";
 
 import { AuthProvider, AuthContext } from "../contexts/auth";
-import { AddQt } from "../components/editProduct/AddQt";
+import { AddQt } from "../components/Product/AddQt";
 
 export const GlobalRoutes = () => {
   return (
@@ -63,6 +64,8 @@ export const GlobalRoutes = () => {
             }
           />
 
+
+
           <Route
             path="/product"
             element={
@@ -95,14 +98,19 @@ export const GlobalRoutes = () => {
               </RequireAuth>
             }
           />
+          
           <Route
-            path="/product/edit/add"
+            path="/sales"
             element={
               <RequireAuth>
-                <AddQt />
+                <Sales />
               </RequireAuth>
             }
           />
+
+
+
+
         </Routes>
       </AuthProvider>
     </BrowserRouter>
