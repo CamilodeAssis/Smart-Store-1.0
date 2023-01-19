@@ -20,19 +20,19 @@ export const Product = () => {
             <div className="w-full ">
               <div className=" grid grid-cols-3 grid-flow-row gap-6">
                 <Link to="/product/register">
-                  <div className="w-auto h-32 bg-green-500 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl hover:bg-green-400 gap-10 p-6 ">
+                  <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl  gap-10 p-6 ">
                     <FaBox className="w-16 h-16" />
                     <span>Cadastrar novos produtos</span>
                   </div>
                 </Link>
                 <Link to="/product/consult">
-                  <div className="w-auto h-32 bg-blue-500 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl hover:bg-blue-400 gap-10 p-6 ">
+                  <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl gap-10 p-6 ">
                     <FaSearch className="w-16 h-16" />
                     <span>Consultar </span>
                   </div>
                 </Link>
                 <Link to="/product/edit">
-                <div className="w-auto h-32 bg-orange-500 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl hover:bg-orange-400 gap-10 p-6 ">
+                <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl  gap-10 p-6 ">
                     <FaFileInvoice className="w-16 h-16" />
                     <span>Entrada no estoque</span>
                   </div>

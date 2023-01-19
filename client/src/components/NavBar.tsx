@@ -8,6 +8,7 @@ import { AuthContext } from "../contexts/auth";
 type Props = {
     color?: string;
     desc: string
+    
 }
 
 export const NavBar = ({color, desc}: Props) => {
@@ -18,7 +19,7 @@ export const NavBar = ({color, desc}: Props) => {
     return (
         <div className="flex justify-between items-center w-full h-16 bg-white drop-shadow-md p-3">
 
-            <div style={{background: color, border: `1px solid ${color}`}} className='text-2xl font-bold  text-white rounded-md px-6 py-2'>{desc}</div>
+            <div style={{color: color}} className='text-2xl font-bold  text-white rounded-md px-6 py-2'>{desc}</div>
             <div className='flex justify-between items-center gap-3'>
 
                 <AiOutlineSetting size={26} color={color} />

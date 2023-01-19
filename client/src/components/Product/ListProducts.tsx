@@ -3,11 +3,9 @@ import { api } from "../../data/api";
 import { Menu } from "../Menu";
 import { NavBar } from "../NavBar";
 import { useForm } from "react-hook-form";
-import { FaCartPlus, FaPlus, FaMinus } from 'react-icons/fa'
-
+import { FaCartPlus, FaPlus, FaMinus } from "react-icons/fa";
 
 import { DataProductType } from "../../types/dataProductType";
-
 
 export const ListProducts = () => {
   const color = "#3b82f6";
@@ -45,44 +43,56 @@ export const ListProducts = () => {
             onSubmit={handleSubmit(handleClickSubimit)}
           >
             <input
-              className="flex-1 text-lg rounded focus:outline-blue-500  "
+              className="flex-1 text-lg rounded focus:outline-none drop-shadow "
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white rounded p-2 hover:bg-blue-400"
+              className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-yellow-500 text-white font-bold rounded p-2 drop-shadow"
             >
               Pesquisar
             </button>
           </form>
-          
-          <div className="grid grid-cols-4 grid-flow-row gap-8 w-full">
+
+          <div className="grid grid-cols-9 grid-flow-row gap-2 w-full h-auto">
             {data &&
               data.map((data, index) => (
                 <div
-                  className="flex flex-col  h-auto justify-center items-center  bg-white rounded p-4 drop-shadow-md  "
+                  className="flex flex-col h-auto  bg-white rounded p-2 drop-shadow-md  "
                   key={index}
-                > 
-                  
-                  <div className="h-full w-full flex justify-center items-center ">
-                  <img className="w-36 h-auto mb-2 " src={url + data.image} alt="" />
+                >
+                  <div className="flex flex-col h-full j mb-2">
+                    <div className="h-24  flex justify-center items-center ">
+                      <img
+                        className="w-20 h-auto mb-2 "
+                        src={url + data.image}
+                        alt=""
+                      />
+                    </div>
+
+                    <h1 className="font-bold  text-center text-sm mb-2">
+                      {data.name}
+                    </h1>
+                    <p className="text-center text-xs"> {data.description}</p>
+                    
                   </div>
-                  <h1 className="font-bold  text-center">{data.name}</h1>
-                  <p>{data.description}</p>
-                  <br />
-                  <div className="bg-blue-500 w-full text-center text-white font-bold rounded">Quantidade em estoque: {data.quantity}</div>
 
-                  <div className="flex justify-center items-center gap-1 mt-2 w-full">
-                  <FaMinus size={20} className="text-red-500"/>
-                  <input className="border w-10 text-center" type="" name="" id="" defaultValue={1}/>
-                  <FaPlus size={20} className="text-green-500"/>
+                  <div >
+                    <div className=" w-full text-center text-xs  font-bold rounded ">
+                      <hr />
+                      Quantidade em estoque: {data.quantity}
+                      <hr />
+                    </div>
 
-                  <button className="bg-orange-500 flex rounded text-white p-2 ml-3"> Adicionar ao carrinho</button>
+                    <div className="flex flex-col justify-center items-center  w-full mt-2">
+                      <button className="bg-gradient-to-r from-green-500 to-green-500 hover:from-green-400 hover:to-blue-500  text-sm flex rounded  text-white p-1 drop-shadow-md">
+                        Adicionar ao carrinho
+                      </button>
+                    </div>
                   </div>
                 </div>
-                 
               ))}
           </div>
         </div>

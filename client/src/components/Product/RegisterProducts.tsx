@@ -96,7 +96,7 @@ export const RegisterProducts = () => {
             <div className="flex bg-white w-2/6 flex-col items-center h-auto rounded-md p-6">
               <div className="mb-6">
                 <div className="flex justify-center items-center flex-col gap-3">
-                  <ImBoxAdd size={60} className="text-green-500" />
+                  <ImBoxAdd size={60} className=" text-green-500" />
                   <h1 className="font-bold text-2xl">Registre um Produto</h1>
                 </div>
               </div>
@@ -168,7 +168,7 @@ export const RegisterProducts = () => {
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
-                    className=" border text-white text-xl rounded-md drop-shadow bg-green-500 hover:bg-green-300 w-4/5 p-2"
+                    className=" border text-white font-bold text-xl rounded-md drop-shadow bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-yellow-500 w-4/5 p-2"
                   >
                     Cadastrar
                   </button>

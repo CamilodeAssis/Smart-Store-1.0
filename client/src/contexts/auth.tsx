@@ -34,8 +34,6 @@ export const AuthProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
-
-
   useEffect(() => {
     const recoveredUser = Cookies.get("user");
 
@@ -67,6 +65,8 @@ export const AuthProvider = ({ children }: Props) => {
       navigate("/login");
     }
   };
+
+  
 
   const contextValue: AuthContextProps = {
     authenticated: !!user,

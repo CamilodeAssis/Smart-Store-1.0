@@ -18,13 +18,13 @@ export const User = () => {
                         <div className="w-full ">
                             <div className=" grid grid-cols-3 grid-flow-row gap-6" >
                                 <Link to='/user/register'>
-                                    <div className="w-auto h-32 bg-green-500 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl hover:bg-green-400 ">Cadrastrar usuarios</div>
+                                    <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl  ">Cadrastrar usuarios</div>
                                 </Link>
                                 <Link to='/user/consult'>
-                                    <div className="w-auto h-32 bg-blue-500 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl hover:bg-blue-400">Consultar Usuarios</div>
+                                    <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl ">Consultar Usuarios</div>
                                 </Link>
 
-                                <div className="w-auto h-32 bg-orange-500 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl hover:bg-orange-400">Editar Usuarios</div>
+                                <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl ">Editar Usuarios</div>
 
                             </div>
                         </div>
