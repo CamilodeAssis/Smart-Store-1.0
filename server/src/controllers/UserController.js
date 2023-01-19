@@ -75,7 +75,7 @@ module.exports = {
             logged_in_user_image: user.image,
             message: "successful",
             logged_in_user_id: user.id,
-            url: "http://18.231.50.132/files/users/",
+            url: "http://18.231.50.132:3333/files/users/",
             token: token,
           });
         } else {
