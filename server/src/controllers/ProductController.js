@@ -58,7 +58,7 @@ module.exports = {
       return res.json({
         erro: false,
         products,
-        url: "http://localhost:3333/files/products/",
+        url: "http://18.231.50.132:3333/files/products/",
       });
     });
   },
