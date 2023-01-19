@@ -27,7 +27,7 @@ export const Login = () => {
   // }
 
   return (
-    <div className="bg-blue-800 flex  justify-center items-center h-screen">
+    <div className="bg-gradient-to-b from-blue-800  via-purple-800 to-purple-600 flex  justify-center items-center h-screen">
       <div className="flex flex-col justify-between items-center gap-24  w-2/3 ">
         <div className="w-auto text-white text-center flex flex-col gap-9">
           <h1 className="font-bold text-3xl">SmartManager</h1>
@@ -35,7 +35,7 @@ export const Login = () => {
         </div>
 
         <div className="flex flex-col justify-center  items-center bg-white h-auto w-[400px]  px-6 py-6 rounded-md gap-2">
-          <h1 className="text-2xl font-bold mb-4">LOGIN</h1>
+          <h1 className="text-2xl font-bold mb-4 text-blue-700">LOGIN</h1>
 
           <div className="flex items-center flex-col w-full gap-2">
             <input
@@ -43,7 +43,7 @@ export const Login = () => {
               disabled={disabled}
               type="text"
               placeholder="E-MAIL"
-              className="border rounded w-11/12 h-10 focus:outline-none"
+              className="border rounded w-11/12 h-10 focus:outline-none "
             />
             <input
               onChange={(e) => setPassword(e.target.value)}
@@ -60,13 +60,14 @@ export const Login = () => {
           <button
             onClick={handleSubmit}
             disabled={disabled}
-            className="bg-blue-800 text-white p-1 rounded w-2/5 font-bold text-2xl hover:bg-blue-600"
+            className="bg-blue-700 hover:bg-blue-500 text-white p-1 rounded w-2/5 font-bold text-2xl "
           >
             Entrar
           </button>
         </div>
 
         <p>{error}</p>
+
       </div>
     </div>
   );

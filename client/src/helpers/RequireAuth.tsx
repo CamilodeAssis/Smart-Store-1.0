@@ -10,6 +10,7 @@ export const RequireAuth = ({ children }: Props) => {
 
     const { authenticated, loading } = useContext(AuthContext);
     
+    const burla = true;
 
     if(loading) {
         return <div>Loading...</div>;

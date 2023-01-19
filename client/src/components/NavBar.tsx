@@ -25,7 +25,7 @@ export const NavBar = ({color, desc}: Props) => {
                 <AiOutlineSetting size={26} color={color} />
                 <IoNotificationsOutline size={26} color={color} />  
                 <div style={{ border: `1px solid ${color}`}} className={`w-12 h-12 rounded-full overflow-hidden flex justify-center items-center `}>
-                <img  src={user.url + user.logged_in_user_image} alt="" />
+                <img src={user.url + user.logged_in_user_image} alt="" />
                 </div>
                 
             </div>
