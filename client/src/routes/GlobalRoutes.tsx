@@ -10,12 +10,15 @@ import { Product } from "../pages/Product";
 import { RegisterProducts } from "../components/Product/RegisterProducts";
 import { ListProducts } from "../components/Product/ListProducts";
 import { EditProduct } from "../components/Product/EditProduct";
-import {Sales} from '../pages/Sales'
+import { Sales } from "../pages/Sales";
+import { AddSaleOrder } from "../components/Sales/AddSaleOrder";
+import { RegisterNormalUsers } from "../pages/RegisterNormalUsers";
 
 import { RequireAuth } from "../helpers/RequireAuth";
 
 import { AuthProvider, AuthContext } from "../contexts/auth";
 import { AddQt } from "../components/Product/AddQt";
+import { Home } from "../pages/Home";
 
 export const GlobalRoutes = () => {
   return (
@@ -27,10 +30,22 @@ export const GlobalRoutes = () => {
             path="/"
             element={
               <RequireAuth>
+                <Home />
+              </RequireAuth>
+            }
+          />
+
+<Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
                 <Dashboard />
               </RequireAuth>
             }
           />
+
+          <Route path="/register" element={<RegisterNormalUsers />} />
+
           <Route
             path="/user"
             element={
@@ -64,8 +79,6 @@ export const GlobalRoutes = () => {
             }
           />
 
-
-
           <Route
             path="/product"
             element={
@@ -98,7 +111,7 @@ export const GlobalRoutes = () => {
               </RequireAuth>
             }
           />
-          
+
           <Route
             path="/sales"
             element={
@@ -108,9 +121,14 @@ export const GlobalRoutes = () => {
             }
           />
 
-
-
-
+          <Route
+            path="sales/saleOrder"
+            element={
+              <RequireAuth>
+                <AddSaleOrder />
+              </RequireAuth>
+            }
+          />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

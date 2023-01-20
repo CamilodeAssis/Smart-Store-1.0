@@ -56,7 +56,7 @@ module.exports = {
     const { email, password } = req.body;
 
     await User.findOne({
-      attributes: ["id", "name", "username", "email", "password", "image"],
+      attributes: ["id", "name", "username", "email", "password", "image","type"],
       where: {
         email: email,
       },
@@ -75,7 +75,8 @@ module.exports = {
             logged_in_user_image: user.image,
             message: "successful",
             logged_in_user_id: user.id,
-            url: "http://18.231.50.132:3333/files/users/",
+            logged_in_user_type: user.type,
+            url: "http://localhost:3333/files/users/",//"http://18.231.50.132:3333/files/users/", 
             token: token,
           });
         } else {

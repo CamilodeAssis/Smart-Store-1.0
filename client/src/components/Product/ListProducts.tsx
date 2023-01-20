@@ -6,12 +6,15 @@ import { useForm } from "react-hook-form";
 import { FaCartPlus, FaPlus, FaMinus } from "react-icons/fa";
 
 import { DataProductType } from "../../types/dataProductType";
+import { el } from "date-fns/locale";
 
 export const ListProducts = () => {
   const color = "#3b82f6";
   const desc = "Consultar estoque";
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  
 
   const [data, setData] = useState<DataProductType[]>();
   const [url, setUrl] = useState("");
@@ -25,6 +28,16 @@ export const ListProducts = () => {
     }
     return setData(response.products), setUrl(response.url);
   };
+
+  const setToLocalStorage = (key: any, value: any) => {
+    if (value.quantity > 0){
+      localStorage.setItem(key, JSON.stringify(value))
+    }else{
+      alert('Este produto nao esta disponivel no estoque no momento')
+    }
+    
+  }
+
 
   useEffect(() => {
     handleClickSubimit();
@@ -87,7 +100,10 @@ export const ListProducts = () => {
                     </div>
 
                     <div className="flex flex-col justify-center items-center  w-full mt-2">
-                      <button className="bg-gradient-to-r from-green-500 to-green-500 hover:from-green-400 hover:to-blue-500  text-sm flex rounded  text-white p-1 drop-shadow-md">
+                      <button 
+                      onClick={() => {
+                        setToLocalStorage(data.name, data)}}
+                      className="bg-gradient-to-r from-green-500 to-green-500 hover:from-green-400 hover:to-blue-500  text-sm flex rounded  text-white p-1 drop-shadow-md">
                         Adicionar ao carrinho
                       </button>
                     </div>
