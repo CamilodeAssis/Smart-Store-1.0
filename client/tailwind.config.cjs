@@ -7,10 +7,14 @@ module.exports = {
   ],
   
   theme: {
-    fontFamily:{
-      'sans': ['Inter', 'sans-serif', ]
-    },
+   
     extend: {
+
+      fontFamily:{
+        'roboto': ['Roboto', 'sans-serif', ],
+        'playfair': ['Playfair Display' ]
+        
+      },
       
       colors:{
         'grayBG': '#F2F2F2'

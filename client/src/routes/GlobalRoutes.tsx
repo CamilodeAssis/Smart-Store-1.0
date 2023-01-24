@@ -20,6 +20,7 @@ import { AuthProvider, AuthContext } from "../contexts/auth";
 import { AddQt } from "../components/Product/AddQt";
 import { Home } from "../pages/Home";
 
+
 export const GlobalRoutes = () => {
   return (
     <BrowserRouter>
@@ -35,7 +36,7 @@ export const GlobalRoutes = () => {
             }
           />
 
-<Route
+          <Route
             path="/dashboard"
             element={
               <RequireAuth>

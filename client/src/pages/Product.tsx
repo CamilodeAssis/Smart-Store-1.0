@@ -3,8 +3,8 @@ import { NavBar } from "../components/NavBar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaBox } from "react-icons/fa";
-import { FaSearch} from 'react-icons/fa'
-import { FaFileInvoice } from 'react-icons/fa'
+import { FaSearch } from "react-icons/fa";
+import { FaFileInvoice } from "react-icons/fa";
 
 export const Product = () => {
   const color = "#7e22ce";
@@ -32,7 +32,7 @@ export const Product = () => {
                   </div>
                 </Link>
                 <Link to="/product/edit">
-                <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl  gap-10 p-6 ">
+                  <div className="w-auto h-32 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-400 hover:to-pink-400 drop-shadow rounded text-white  flex justify-center items-center font-bold text-3xl  gap-10 p-6 ">
                     <FaFileInvoice className="w-16 h-16" />
                     <span>Entrada no estoque</span>
                   </div>

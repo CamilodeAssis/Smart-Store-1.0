@@ -32,12 +32,12 @@ export const Login = () => {
   // }
 
   return (
-    <div className="bg-gradient-to-t from-blue-500  to-gray-800 flex  justify-center items-center h-screen">
-      <div className="flex flex-col justify-between items-center gap-24  w-2/3 ">
+    <div className=" bg-slate-800 flex  justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center gap-24  w-4/5 ">
         <div className="w-auto text-white text-center flex flex-col gap-9">
-          <div className="flex justify-center items-center gap-2">
-            <IoStorefrontSharp size={60} />
-            <h1 className="font-bold text-4xl">Smart Store</h1>
+          <div className="flex justify-center items-center gap-9">
+            <IoStorefrontSharp size={100} />
+            <h1 className="font-bold font-playfair text-6xl">Smart Store</h1>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ export const Login = () => {
           <button
             onClick={handleSubmit}
             disabled={disabled}
-            className="bg-blue-500 hover:bg-blue-400 text-white p-1 rounded w-2/5 font-bold text-2xl my-2"
+            className="bg-orange-500 hover:bg-orange-400 text-white p-1 rounded w-2/5 font-bold text-2xl my-2"
           >
             Entrar
           </button>

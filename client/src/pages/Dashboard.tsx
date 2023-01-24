@@ -10,7 +10,7 @@ import {MdSupportAgent} from 'react-icons/md'
 export const Dashboard = () => {
  
 
-  const color = "#3B82F6";
+  const color = "#1D4ED8";
   const desc = "Dashboard";
 
   return (

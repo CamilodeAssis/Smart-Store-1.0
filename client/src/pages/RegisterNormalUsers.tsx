@@ -94,19 +94,19 @@ export const RegisterNormalUsers = () => {
       <section className="flex ">
         <div className="w-full">
           <NavBar />
-          <div className="flex flex-col bg-white items-center h-screen  w-full ">
+          <div className="flex flex-col bg-white  items-center h-screen  w-full ">
             <div className="flex w-2/6 flex-col items-center justify-center rounded-md mt-10">
-              <h1 className="text-2xl font-bold mb-10 text-zinc-800">CRIAR CONTA</h1>
+              <h1 className="text-2xl font-bold mb-10 text-black">CRIAR CONTA</h1>
               <form
               
-                className="flex flex-col w-4/5 "
+                className="flex flex-col w-4/5 text-black"
                 onSubmit={handleSubmit(handleClickSubimit)}
               >
                 
                 <input
                   placeholder="Nome Completo" 
                   type="text"
-                  className="border border-zinc-500 rounded-md drop-shadow h-8 focus:outline-none mb-3 "
+                  className=" rounded-md drop-shadow h-8 focus:outline-none mb-3 "
                   {...register("name")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -116,7 +116,7 @@ export const RegisterNormalUsers = () => {
                 <input
                   placeholder="Nome de usuário"
                   type="text"
-                  className="border border-zinc-500 rounded-md drop-shadow h-8 focus:outline-none mb-3 "
+                  className=" rounded-md drop-shadow h-8 focus:outline-none mb-3 "
                   {...register("username")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -127,7 +127,7 @@ export const RegisterNormalUsers = () => {
                 <input
                   placeholder="Email"
                   type="email"
-                  className="border border-zinc-500 rounded-md drop-shadow h-8 focus:outline-none mb-3 b"
+                  className=" rounded-md drop-shadow h-8 focus:outline-none mb-3 b"
                   {...register("email")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -139,7 +139,7 @@ export const RegisterNormalUsers = () => {
                   type="password"
                   {...register("password")}
                   autoComplete="current-password"
-                  className="border border-zinc-500 rounded-md drop-shadow h-8 focus:outline-none mb-3 "
+                  className=" rounded-md drop-shadow h-8 focus:outline-none mb-3 "
                 />
                 <span className="text-red-500 my-1 text-xs">
                   <>{errors?.password?.message}</>
@@ -149,18 +149,18 @@ export const RegisterNormalUsers = () => {
                   placeholder="Confirme sua senha"
                   type="password"
                   autoComplete="current-password"
-                  className="border border-zinc-500 rounded-md drop-shadow h-8 focus:outline-none mb-6 "
+                  className=" rounded-md drop-shadow h-8 focus:outline-none mb-6 "
                   {...register("confirmPassword")}
                 />
                 <span className="text-red-500 my-1 text-xs">
                   <>{errors?.confirmPassword?.message}</>
                 </span>
 
-                <label  className="text-center mb-2 text-white">Escolha uma foto para seu perfil</label>
+                <label  className="text-center mb-2 text-black ">Escolha uma foto para seu perfil</label>
                 <input
                   
                   type="file"
-                  className=" text-zinc-400 border border-zinc-500 rounded-md drop-shadow h-8 focus:outline-none mb-6 "
+                  className="bg-white border rounded-md drop-shadow h-8 focus:outline-none mb-6 "
                   name="image"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;
@@ -191,7 +191,7 @@ export const RegisterNormalUsers = () => {
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
-                    className=" text-white text-2xl font-bold rounded-md drop-shadow bg-blue-500 hover:bg-blue-400  w-4/5 p-2"
+                    className="text-white text-2xl font-bold bg-orange-500 hover:bg-orange-400  drop-shadow   rounded   w-4/5 p-2"
                   >
                     Cadastrar
                   </button>

@@ -5,9 +5,10 @@ import { Menu } from "../components/Menu";
 import { Calendar } from "../components/Calendar";
 import { Weather } from "../components/Weather";
 import {MdSupportAgent} from 'react-icons/md'
+import { Carousel } from "../components/Carousel";
 
 
-const color = "#3B82F6";
+const color = "#1D4ED8";
 const desc = "Home";
 
 
@@ -18,9 +19,10 @@ export const Home = () => {
         <section className="flex ">
         <Menu />
         <div className="w-full">
-          <NavBar color={color} desc={desc} />
-          <div className="flex flex-col bg-grayBG min-h-screen w-full p-10 gap-12">
+          <NavBar  />
+          <div className="flex flex-col items-center  bg-grayBG min-h-screen w-full py-10 px-10">
             
+            <Carousel />
            
           </div>
         </div>
