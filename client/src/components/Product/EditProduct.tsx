@@ -10,7 +10,7 @@ import { DataProductType } from "../../types/dataProductType";
 
 import { FaFileInvoice } from "react-icons/fa";
 
-import { NavBar } from "../NavBar";
+import { NavBar } from "../NavBar/NavBar";
 import { Menu } from "../Menu";
 import uploadapi from "../../data/api";
 

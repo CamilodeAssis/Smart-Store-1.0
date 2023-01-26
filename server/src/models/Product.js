@@ -7,6 +7,8 @@ class Product extends Model {
             description: DataTypes.STRING,
             quantity: DataTypes.INTEGER,
             value: DataTypes.NUMBER,
+            sale_value: DataTypes.NUMBER,
+            department: DataTypes.STRING,
             amount_value: DataTypes.NUMBER,
             image: DataTypes.STRING
         }, {

@@ -2,10 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Roboto', sans-serif;
+@layer utilities {
+  .drop-menu {
+    display: none;
+  }
 }
 
+
+*{
+  
+  font-family: 'Roboto', -apple-system, system-ui, sans-serif;
+}
+
+ 
 
 @layer base {
   .font-outline-2 {

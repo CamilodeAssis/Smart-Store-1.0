@@ -7,9 +7,11 @@ module.exports = {
       type: Sequelize.FLOAT,
       allowNull: false,
     });
+   
   },
 
   async down(queryInterface, Sequelize) {
     await queryInterface.removeColumn("products", "amount_value");
+    
   },
 };

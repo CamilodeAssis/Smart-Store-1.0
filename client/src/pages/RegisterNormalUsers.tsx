@@ -6,15 +6,10 @@ import { object, ref, string } from "yup";
 
 import img from "../../public/images/default-user.png";
 
-
-
-import { NavBar } from "../components/NavBar";
+import { NavBar } from "../components/NavBar/NavBar";
 import { Footer } from "../components/Footer";
-import { Menu } from "../components/Menu";
-import { api } from "../data/api";
-import uploadapi from "../data/api";
 
-import { GiArchiveRegister } from "react-icons/gi";
+import uploadapi from "../data/api";
 
 const schema = object({
   name: string()
@@ -56,6 +51,7 @@ export const RegisterNormalUsers = () => {
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("image", image);
+   
 
     const headers = {
       headers: {
@@ -68,6 +64,7 @@ export const RegisterNormalUsers = () => {
         setStatus({
           type: "success",
           message: response.data.message,
+
           error: response.data.error,
         });
       })
@@ -76,6 +73,7 @@ export const RegisterNormalUsers = () => {
           setStatus({
             type: "error",
             message: error.response.data.message,
+
             error: error.response.data.error,
           });
         } else {
@@ -96,15 +94,15 @@ export const RegisterNormalUsers = () => {
           <NavBar />
           <div className="flex flex-col bg-white  items-center h-screen  w-full ">
             <div className="flex w-2/6 flex-col items-center justify-center rounded-md mt-10">
-              <h1 className="text-2xl font-bold mb-10 text-black">CRIAR CONTA</h1>
+              <h1 className="text-2xl font-bold mb-10 text-black">
+                CRIAR CONTA
+              </h1>
               <form
-              
                 className="flex flex-col w-4/5 text-black"
                 onSubmit={handleSubmit(handleClickSubimit)}
               >
-                
                 <input
-                  placeholder="Nome Completo" 
+                  placeholder="Nome Completo"
                   type="text"
                   className=" rounded-md drop-shadow h-8 focus:outline-none mb-3 "
                   {...register("name")}
@@ -122,8 +120,7 @@ export const RegisterNormalUsers = () => {
                 <span className="text-red-500 my-1 text-xs">
                   <>{errors?.username?.message}</>
                 </span>
-                
-               
+
                 <input
                   placeholder="Email"
                   type="email"
@@ -133,7 +130,7 @@ export const RegisterNormalUsers = () => {
                 <span className="text-red-500 my-1 text-xs">
                   <>{errors?.email?.message}</>
                 </span>
-               
+
                 <input
                   placeholder="Senha"
                   type="password"
@@ -156,9 +153,10 @@ export const RegisterNormalUsers = () => {
                   <>{errors?.confirmPassword?.message}</>
                 </span>
 
-                <label  className="text-center mb-2 text-black ">Escolha uma foto para seu perfil</label>
+                <label className="text-center mb-2 text-black ">
+                  Escolha uma foto para seu perfil
+                </label>
                 <input
-                  
                   type="file"
                   className="bg-white border rounded-md drop-shadow h-8 focus:outline-none mb-6 "
                   name="image"

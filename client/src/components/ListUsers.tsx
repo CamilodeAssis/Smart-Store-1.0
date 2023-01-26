@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../data/api";
 import { Menu } from "../components/Menu";
-import { NavBar } from "../components/NavBar";
+import { NavBar } from "./NavBar/NavBar";
 
 import { DataType } from "../types/dataType";
 import { User } from "../pages/User";

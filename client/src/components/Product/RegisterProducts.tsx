@@ -7,7 +7,7 @@ import { mixed, number, object, ref, string } from "yup";
 import img from "../../../public/images/default-product.jpg";
 import { ImBoxAdd } from "react-icons/im";
 
-import { NavBar } from "../NavBar";
+import { NavBar } from "../NavBar/NavBar";
 import { Menu } from "../Menu";
 import uploadapi from "../../data/api";
 

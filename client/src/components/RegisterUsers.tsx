@@ -6,7 +6,7 @@ import { object, ref, string } from "yup";
 
 import img from "../../public/images/default-user.png";
 
-import { NavBar } from "./NavBar";
+import { NavBar } from "./NavBar/NavBar";
 import { Menu } from "./Menu";
 import { api } from "../data/api";
 import uploadapi from "../data/api";

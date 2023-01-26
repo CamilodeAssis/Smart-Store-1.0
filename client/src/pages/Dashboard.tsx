@@ -1,6 +1,6 @@
 
 
-import { NavBar } from "../components/NavBar";
+import { NavBar } from "../components/NavBar/NavBar";
 import { Menu } from "../components/Menu";
 import { Calendar } from "../components/Calendar";
 import { Weather } from "../components/Weather";
@@ -17,9 +17,9 @@ export const Dashboard = () => {
     <>
       <section className="flex ">
         <Menu />
-        <div className="w-full">
+        <div className="flex flex-col  items-center w-full">
           <NavBar color={color} desc={desc} />
-          <div className="flex flex-col bg-grayBG min-h-screen w-full p-10 gap-12">
+          <div className="flex flex-col bg-grayBG min-h-screen w-4/5 p-10 gap-12 mt-2">
             <div className=" flex justify-between gap-12 ">
               <div className="w-full">
                 <div className=" grid grid-cols-2 grid-flow-row gap-12 ">

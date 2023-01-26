@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { Menu } from "../components/Menu";
-import { NavBar } from "../components/NavBar";
+import { NavBar } from "../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaBox } from "react-icons/fa";

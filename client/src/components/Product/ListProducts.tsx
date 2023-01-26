@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../data/api";
 import { Menu } from "../Menu";
-import { NavBar } from "../NavBar";
+import { NavBar } from "../NavBar/NavBar";
 import { useForm } from "react-hook-form";
 import { FaCartPlus, FaPlus, FaMinus } from "react-icons/fa";
 
