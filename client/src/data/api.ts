@@ -54,6 +54,12 @@ export const api = {
         return response.data;
     },
 
+    getDepartmentProductByQuery: async (query: string) => {
+        let response = await axios.get(`${BASE}/home/products${query}`);
+        return response.data;
+    },
+
+
     registerProducts: async ({ userId, invoice_number, cnpj, date, name, quantity, value, username }: DataInvoiceType) => {
         let response = await axios.post(`${BASE}/users/${userId}/invoices`, {
             invoice_number,

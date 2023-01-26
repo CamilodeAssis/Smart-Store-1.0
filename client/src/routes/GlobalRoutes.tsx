@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import { Login } from "../pages/Login";
-import { RegisterUsers } from "../components/RegisterUsers";
+import { RegisterUsers } from "../components/Users/RegisterUsers";
 import { Dashboard } from "../pages/Dashboard";
-
-import { ListUsers } from "../components/ListUsers";
-
+import { ListUsers } from "../components/Users/ListUsers";
+import { Home } from "../pages/Home";
+import { Settings } from "../pages/Settings";
 import { RegisterProducts } from "../components/Product/RegisterProducts";
 import { ListProducts } from "../components/Product/ListProducts";
 import { EditProduct } from "../components/Product/EditProduct";
@@ -14,13 +14,11 @@ import { Sales } from "../pages/Sales";
 import { AddSaleOrder } from "../components/Sales/AddSaleOrder";
 import { RegisterNormalUsers } from "../pages/RegisterNormalUsers";
 import { NotFound } from "../pages/404";
-
 import { RequireAuth } from "../helpers/RequireAuth";
 
-import { AuthProvider, AuthContext } from "../contexts/auth";
-import { AddQt } from "../components/Product/AddQt";
-import { Home } from "../pages/Home";
-import { Settings } from "../pages/Settings";
+import { AuthProvider } from "../contexts/auth";
+
+
 
 export const GlobalRoutes = () => {
   return (
@@ -66,7 +64,6 @@ export const GlobalRoutes = () => {
             }
           />
 
-          
           <Route
             path="/product/register"
             element={
@@ -110,7 +107,7 @@ export const GlobalRoutes = () => {
             }
           />
 
-<Route
+          <Route
             path="/settings"
             element={
               <RequireAuth>

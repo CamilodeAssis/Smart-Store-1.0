@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { api } from "../data/api";
-import { Menu } from "../components/Menu";
-import { NavBar } from "./NavBar/NavBar";
+import { api } from "../../data/api";
+import { Menu } from "../Menu";
+import { NavBar } from "../NavBar/NavBar";
 
-import { DataType } from "../types/dataType";
-import { User } from "../pages/User";
+import { DataType } from "../../types/dataType";
+
 
 export const ListUsers = () => {
   const color = "#3b82f6"

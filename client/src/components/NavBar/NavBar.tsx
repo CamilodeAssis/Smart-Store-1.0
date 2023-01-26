@@ -49,7 +49,6 @@ export const NavBar = ({ color, desc }: Props) => {
           <div className="flex justify-center items-center w-full h-20 bg-slate-800 ">
             <div className="w-4/5 flex justify-between items-center">
               <div className="flex justify-center items-center  gap-2  text-white">
-                {/* <IoStorefrontSharp size={34} /> */}
                 <span className="text-3xl font-bold hover:text-orange-500">
                   {" "}
                   <Link to="/">SMART STORE</Link>
@@ -104,9 +103,7 @@ export const NavBar = ({ color, desc }: Props) => {
           <div className="flex justify-center items-center w-full h-20 bg-slate-800 ">
             <div className="w-4/5 flex justify-between items-center">
               <div className="flex justify-center items-center  gap-2  text-white">
-                {/* <IoStorefrontSharp size={34} /> */}
                 <span className="text-3xl font-bold hover:text-orange-500">
-                  {" "}
                   <Link to="/">SMART STORE</Link>
                 </span>
               </div>
@@ -184,7 +181,7 @@ export const NavBar = ({ color, desc }: Props) => {
                 </div>
                 <IoNotifications size={30} />
 
-                {user ? (
+                {/* {user ? (
                   <button
                     onClick={() => doLogout(true)}
                     className="flex justify-center items-center gap-2 hover:bg-slate-700 rounded p-1"
@@ -192,7 +189,7 @@ export const NavBar = ({ color, desc }: Props) => {
                     <span>Logout</span>
                     <AiOutlineLogout size={30} />
                   </button>
-                ) : (
+                ) : ( */}
                   <div className="flex flex-col items-center text-xs">
                     <span>
                       Faça{" "}
@@ -207,7 +204,7 @@ export const NavBar = ({ color, desc }: Props) => {
                       </Link>
                     </span>
                   </div>
-                )}
+                {/* )} */}
 
                 <div
                   className={`w-12 h-12 rounded-full overflow-hidden flex justify-center items-center border `}

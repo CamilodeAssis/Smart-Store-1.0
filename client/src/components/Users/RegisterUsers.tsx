@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, ref, string } from "yup";
 
-import img from "../../public/images/default-user.png";
+import img from "../../../public/images/default-user.png";
 
-import { NavBar } from "./NavBar/NavBar";
-import { Menu } from "./Menu";
-import { api } from "../data/api";
-import uploadapi from "../data/api";
+import { NavBar } from "../NavBar/NavBar";
+import { Menu } from "../Menu";
+import { api } from "../../data/api";
+import uploadapi from "../../data/api";
 
 import { GiArchiveRegister } from "react-icons/gi";
 

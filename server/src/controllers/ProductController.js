@@ -62,4 +62,23 @@ module.exports = {
       });
     });
   },
+  async getProductByDepartment(req, res) {
+    
+    const query = req.query.name
+
+    await Product.findAll({
+      where:{
+        department: {
+          [Op.like]: `%${query}%`
+        }
+      }
+    }).then((products) => {
+      
+      return res.json({
+        erro: false,
+        products,
+        url: "http://localhost:3333/files/products/",
+      });
+    });
+  },
 };

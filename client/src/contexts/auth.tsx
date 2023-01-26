@@ -52,7 +52,10 @@ export const AuthProvider = ({ children }: Props) => {
     
     if (user.error) {
       setError(user.error);
-    } else {
+    } else if (user.logged_in_user_type === "admin") {
+      setUser(user);
+      navigate("/dashboard");
+    }else{
       setUser(user);
       navigate("/");
     }

@@ -20,6 +20,7 @@ routes.get('/', eAdmin, UserController.listar)
 
 routes.post('/products',uploadimage.single('image') ,ProductController.store)
 routes.get('/products',  ProductController.index)
+routes.get('/home/products',  ProductController.getProductByDepartment)
 
 routes.post('/users/:user_id/invoices', InvoiceController.store)
 routes.get('/users/:user_id/invoices',  InvoiceController.index)

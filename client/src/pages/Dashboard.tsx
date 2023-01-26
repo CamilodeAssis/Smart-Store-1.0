@@ -5,6 +5,7 @@ import { Menu } from "../components/Menu";
 import { Calendar } from "../components/Calendar";
 import { Weather } from "../components/Weather";
 import {MdSupportAgent} from 'react-icons/md'
+import { Footer } from "../components/Footer";
 
 
 export const Dashboard = () => {
@@ -19,7 +20,7 @@ export const Dashboard = () => {
         <Menu />
         <div className="flex flex-col  items-center w-full">
           <NavBar color={color} desc={desc} />
-          <div className="flex flex-col bg-grayBG min-h-screen w-4/5 p-10 gap-12 mt-2">
+          <div className="flex flex-col bg-grayBG min-h-screen w-4/5 p-10 gap-12 my-2">
             <div className=" flex justify-between gap-12 ">
               <div className="w-full">
                 <div className=" grid grid-cols-2 grid-flow-row gap-12 ">
@@ -73,6 +74,7 @@ export const Dashboard = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

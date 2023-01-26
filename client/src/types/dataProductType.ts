@@ -4,7 +4,7 @@ export type DataProductType = {
     description?: string;
     value?: string; 
     quantity?: number;
+    sale_value?: number;
     image: string;
-   
     
 }

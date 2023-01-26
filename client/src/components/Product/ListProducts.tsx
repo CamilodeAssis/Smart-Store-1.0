@@ -72,6 +72,7 @@ export const ListProducts = () => {
           <div className="grid grid-cols-9 grid-flow-row gap-2 w-full h-auto">
             {data &&
               data.map((data, index) => (
+                
                 <div
                   className="flex flex-col h-auto  bg-white rounded p-2 drop-shadow-md  "
                   key={index}

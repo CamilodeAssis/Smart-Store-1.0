@@ -1,18 +1,28 @@
+import { useState, useContext } from "react";
+
 import { Menu } from "../components/Menu";
 import { NavBar } from "../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+
 import { FaBox } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaFileInvoice } from "react-icons/fa";
 
+import { AuthContext } from "../contexts/auth";
+
 export const Settings = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <section className="flex ">
       <Menu />
       <div className="w-full flex flex-col  items-center">
         <NavBar />
         <div className="flex flex-col  bg-grayBG min-h-screen w-4/5 p-6 gap-6 mt-2">
+          <div className="flex justify-center items-center w-full">
+            <h1 className="text-3xl">Olá. <b> {user.logged_in_user_name}</b></h1>
+            
+          </div>
           <div className=" flex justify-between  gap-6 ">
             <div className="w-full flex flex-col ">
               <h1 className="font-bold">PRODUTOS</h1>

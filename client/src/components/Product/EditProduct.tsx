@@ -113,9 +113,9 @@ export const EditProduct = () => {
     <>
       <section className="flex ">
         <Menu />
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center">
           <NavBar color={color} desc={desc} />
-          <div className="flex  justify-center items-center h-full  bg-grayBG w-full p-12">
+          <div className="flex  justify-center items-center h-full  bg-grayBG w-4/5 p-6 mt-2">
             <div className="flex bg-white w-2/6 flex-col items-center h-auto rounded-md p-6">
               <div className="mb-6">
                 <div className="flex justify-center items-center flex-col gap-3">
@@ -218,7 +218,7 @@ export const EditProduct = () => {
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
-                    className=" border text-white text-xl rounded-md drop-shadow bg-orange-500 hover:bg-green-300 w-4/5 p-2"
+                    className=" border text-white text-xl rounded-md drop-shadow bg-orange-500 hover:bg-orange-400 w-4/5 p-2"
                   >
                     Cadastrar
                   </button>
