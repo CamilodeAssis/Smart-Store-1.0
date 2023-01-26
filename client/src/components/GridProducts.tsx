@@ -12,7 +12,7 @@ export const GridProducts = ({ searchTerm }: Props) => {
   const [data, setData] = useState<DataProductType[]>();
   const [url, setUrl] = useState();
 
-  console.log(data);
+
 
   const getProductsByDepartment = async () => {
     const response = await api.getDepartmentProductByQuery(
@@ -22,6 +22,16 @@ export const GridProducts = ({ searchTerm }: Props) => {
       <p>carregando</p>;
     }
     return setData(response.products), setUrl(response.url);
+  };
+
+  
+
+  const formatNumber = (number: number) => {
+    const formatedNumber = new Intl.NumberFormat("pt-BR", {
+      minimumIntegerDigits: 2
+    }).format(number);
+
+    return formatedNumber;
   };
 
   const formatMoney = (money: number) => {
@@ -51,7 +61,7 @@ export const GridProducts = ({ searchTerm }: Props) => {
                 key={index}
               >
                 <div className="border border-orange-500 rounded text-orange-500 text-xs text-center">
-                  {data.quantity} unidades disponiveis
+                  {data.quantity && formatNumber(data.quantity)} unidades disponiveis
                 </div>
                 <div className="flex flex-col h-full justify-center">
                   <div className="h-24  flex justify-center items-center ">
