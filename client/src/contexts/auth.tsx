@@ -1,10 +1,4 @@
-import React, {
-  Children,
-  createContext,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { api } from "../data/api";
 import Cookies from "js-cookie";
@@ -20,7 +14,6 @@ interface AuthContextProps {
   user: any;
   loading: boolean;
   error: any;
-
 }
 
 export const AuthContext = createContext<AuthContextProps>(
@@ -28,7 +21,6 @@ export const AuthContext = createContext<AuthContextProps>(
 );
 
 export const AuthProvider = ({ children }: Props) => {
-
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
@@ -49,13 +41,13 @@ export const AuthProvider = ({ children }: Props) => {
 
     const user = await api.login({ email, password });
     Cookies.set("user", JSON.stringify(user), { expires: date });
-    
+
     if (user.error) {
       setError(user.error);
     } else if (user.logged_in_user_type === "admin") {
       setUser(user);
       navigate("/dashboard");
-    }else{
+    } else {
       setUser(user);
       navigate("/");
     }
@@ -65,11 +57,9 @@ export const AuthProvider = ({ children }: Props) => {
     if (state) {
       Cookies.remove("user");
       setUser("");
-      navigate("/login");
+      navigate("/");
     }
   };
-
-  
 
   const contextValue: AuthContextProps = {
     authenticated: !!user,
@@ -78,7 +68,6 @@ export const AuthProvider = ({ children }: Props) => {
     error,
     doLogin,
     doLogout,
-
   };
 
   return (

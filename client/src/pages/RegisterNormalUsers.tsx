@@ -91,7 +91,7 @@ export const RegisterNormalUsers = () => {
     <>
       <section className="flex ">
         <div className="w-full flex flex-col items-center">
-          <NavBar />
+          <NavBar isLogin={true}/>
           <div className="flex flex-col bg-white  items-center h-screen  w-4/5 ">
             <div className="flex w-2/6 flex-col items-center justify-center rounded-md mt-10">
               <h1 className="text-2xl font-bold mb-10 text-black">

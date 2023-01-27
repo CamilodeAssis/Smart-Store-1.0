@@ -1,5 +1,6 @@
 
 export type DataProductType = {
+    id: number;
     name?: string;
     description?: string;
     value?: string; 

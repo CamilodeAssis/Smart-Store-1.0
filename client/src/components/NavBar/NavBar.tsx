@@ -10,10 +10,10 @@ import defaultUser from "../../../public/images/default-user.png";
 import { NavLinks } from "./NavLinks";
 
 import { AuthContext } from "../../contexts/auth";
+import { CartContext } from "../../contexts/cart";
 
 type Props = {
-  color?: string;
-  desc?: string;
+  isLogin?: boolean;
 };
 
 const departments = [
@@ -28,8 +28,9 @@ const options = [
   { name: "PROMOÇÕES" },
 ];
 
-export const NavBar = ({ color, desc }: Props) => {
+export const NavBar = ({ isLogin }: Props) => {
   const { user, doLogout } = useContext(AuthContext);
+  const { productsCart } = useContext(CartContext);
 
   const dropMenu = () => {
     const menu = document.getElementById("dropMenu");
@@ -68,11 +69,23 @@ export const NavBar = ({ color, desc }: Props) => {
               </div>
 
               <div className="flex justify-between items-center gap-3 text-white">
-                <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800">
+                <Link to="/cart">
+                <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800 group:">
                   <IoMdCart size={24} />
                   <span>CARRINHO</span>
+                  <span
+                    className={`${
+                      Object.keys(productsCart).length > 0
+                        ? "bg-orange-500 rounded-full w-6 h-6 text-center group-hover:text-white"
+                        : "hidden"
+                    }`}
+                  >
+                    {Object.keys(productsCart).length}
+                  </span>
                 </div>
+                </Link>
                 <IoNotifications size={30} />
+
                 <button
                   onClick={() => doLogout(true)}
                   className="flex justify-center items-center gap-2 hover:bg-slate-700 rounded p-1"
@@ -121,10 +134,21 @@ export const NavBar = ({ color, desc }: Props) => {
               </div>
 
               <div className="flex justify-between items-center gap-3 text-white">
-                <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800">
+              <Link to="/cart">
+                <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800 group">
                   <IoMdCart size={24} />
                   <span>CARRINHO</span>
+                  <span
+                    className={`${
+                      Object.keys(productsCart).length > 0
+                        ? "bg-orange-500 rounded-full w-6 h-6 text-center group-hover:text-white  "
+                        : "hidden"
+                    }`}
+                  >
+                    {Object.keys(productsCart).length}
+                  </span>
                 </div>
+                </Link>
                 <IoNotifications size={30} />
                 <button
                   onClick={() => doLogout(true)}
@@ -162,7 +186,9 @@ export const NavBar = ({ color, desc }: Props) => {
                 </span>
               </div>
 
-              <div className="flex flex-1 px-20 gap-4">
+              <div
+                className={`${isLogin ? "hidden" : "flex flex-1 px-20 gap-4"}`}
+              >
                 <input
                   className="w-full rounded outline-none focus:outline-none"
                   type="text"
@@ -175,35 +201,39 @@ export const NavBar = ({ color, desc }: Props) => {
               </div>
 
               <div className="flex justify-between items-center gap-3 text-white">
-                <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800">
-                  <IoMdCart size={24} />
-                  <span>CARRINHO</span>
-                </div>
-                <IoNotifications size={30} />
+                {!isLogin && (
+                  <>
+                    <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800">
+                      <IoMdCart size={24} />
+                      <span>CARRINHO</span>
+                      <span
+                        className={`${
+                          Object.keys(productsCart).length > 0
+                            ? "bg-orange-500 rounded-full w-6 h-6 text-center"
+                            : "hidden"
+                        }`}
+                      >
+                        {Object.keys(productsCart).length}
+                      </span>
+                    </div>
+                    <IoNotifications size={30} />
+                  </>
+                )}
 
-                {/* {user ? (
-                  <button
-                    onClick={() => doLogout(true)}
-                    className="flex justify-center items-center gap-2 hover:bg-slate-700 rounded p-1"
-                  >
-                    <span>Logout</span>
-                    <AiOutlineLogout size={30} />
-                  </button>
-                ) : ( */}
-                  <div className="flex flex-col items-center text-xs">
-                    <span>
-                      Faça{" "}
-                      <Link className="font-bold underline" to="/login">
-                        Login
-                      </Link>{" "}
-                      ou
-                    </span>
-                    <span>
-                      <Link className="font-bold underline" to="/register">
-                        Cadastre-se
-                      </Link>
-                    </span>
-                  </div>
+                <div className="flex flex-col items-center text-xs">
+                  <span>
+                    Faça{" "}
+                    <Link className="font-bold underline" to="/login">
+                      Login
+                    </Link>{" "}
+                    ou
+                  </span>
+                  <span>
+                    <Link className="font-bold underline" to="/register">
+                      Cadastre-se
+                    </Link>
+                  </span>
+                </div>
                 {/* )} */}
 
                 <div
@@ -218,8 +248,18 @@ export const NavBar = ({ color, desc }: Props) => {
               </div>
             </div>
           </div>
-          <div className="w-full bg-orange-500 h-auto flex justify-center items-center ">
-            <div className="w-4/5 flex h-full items-center  gap-4  ">
+          <div
+            className={`${
+              isLogin
+                ? "w-full bg-orange-500 h-4"
+                : "w-full bg-orange-500 h-auto flex justify-center items-center"
+            }`}
+          >
+            <div
+              className={`${
+                isLogin ? "hidden" : "w-4/5 flex h-full items-center  gap-4"
+              }`}
+            >
               <NavLinks />
             </div>
           </div>

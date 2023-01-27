@@ -4,7 +4,7 @@ import { Calendar } from "../components/Calendar";
 import { Weather } from "../components/Weather";
 import { MdSupportAgent } from "react-icons/md";
 import { Carousel } from "../components/Carousel";
-import { GridProducts } from "../components/GridProducts";
+import { GridProducts } from "../components/Product/GridProducts";
 import { Footer } from "../components/Footer";
 
 const color = "#1D4ED8";
