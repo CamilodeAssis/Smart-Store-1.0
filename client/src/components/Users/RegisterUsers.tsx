@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,6 +18,9 @@ const schema = object({
     .required("Campo obrigatório")
     .min(3, "Nome deve conter 3 letras ou mais"),
   username: string().required("Campo obrigatório"),
+  usertype: string()
+    .required("Campo obrigatório")
+    .typeError("Campo obrigatório"),
   email: string().required("Campo obrigatório"),
   password: string()
     .required("Campo obrigatório")
@@ -35,8 +38,6 @@ export const RegisterUsers = () => {
     error: false,
   });
 
-  const desc = "Register users";
-  const color = "#22C55E";
 
   const {
     register,
@@ -50,11 +51,11 @@ export const RegisterUsers = () => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("username", data.username);
+    formData.append("usertype", data.usertype);
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("image", image);
 
-    
     const headers = {
       headers: {
         "Content-Type": "multipart/form-data; boundary=MyBoundary",
@@ -84,145 +85,159 @@ export const RegisterUsers = () => {
           });
         }
       });
-     reset();
+    reset();
   };
 
-  return (
 
-    <>
-      <section className="flex ">
-        <Menu />
-        <div className="w-full">
-          <NavBar color={color} desc={desc} />
-          <div className="flex  justify-center items-center h-auto bg-grayBG w-full p-12">
-            <div className="flex bg-white w-2/6 flex-col items-center  rounded-md p-6">
-              <div className="mb-6">
-                <div className="flex justify-center items-center flex-col gap-3">
-                  <GiArchiveRegister size={60} className="text-green-500" />
-                  <h1 className="font-bold text-2xl">Registre um usuário</h1>
+  useEffect(() => {}, [image]);
+
+  return (
+    <section className="flex ">
+      <Menu />
+      <div className="w-full flex flex-col items-center">
+        <NavBar />
+        <div className="flex  justify-center items-center h-auto bg-grayBG w-4/5 p-12 my-2">
+          <div className="flex bg-white w-1/2 flex-col items-center  rounded-md p-6">
+            <div className="mb-6">
+              <div className="flex justify-center items-center flex-col gap-3">
+                <GiArchiveRegister size={60} className="text-orange-500" />
+                <h1 className="font-bold text-2xl">Registre um usuário</h1>
+              </div>
+            </div>
+
+            <form
+              className="flex flex-col w-4/5 "
+              onSubmit={handleSubmit(handleClickSubimit)}
+            >
+              <label className=" ">Nome Completo</label>
+              <input
+                type="text"
+                className="border rounded-md drop-shadow h-8 focus:outline-none  "
+                {...register("name")}
+              />
+              <span className="text-red-500 my-1 text-xs mb-3" >
+                <>{errors?.name?.message}</>
+              </span>
+
+              <label>Nome de usuário</label>
+              <input
+                type="text"
+                className="border rounded-md drop-shadow h-8 focus:outline-none "
+                {...register("username")}
+              />
+              <span className="text-red-500 my-1 text-xs">
+                <>{errors?.username?.message}</>
+              </span>
+
+              <div className="flex items-center gap-2 my-3 ">
+                <div className="flex  gap-1">
+                  <input type="radio" value="admin" {...register("usertype")} />
+                  Administrador
+                  <span className="text-red-500 my-1 text-xs">
+                    <>{errors?.usertype?.message}</>
+                  </span>
+                </div>
+
+                <div className="flex  gap-1">
+                  <input type="radio" value="user" {...register("usertype")} />
+                  Usuário comum
+                  <span className="text-red-500 my-1 text-xs">
+                    <>{errors?.usertype?.message}</>
+                  </span>
                 </div>
               </div>
+              <label>Email</label>
+              <input
+                type="email"
+                autoComplete="current-email"
+                className="border rounded-md drop-shadow h-8 focus:outline-none "
+                {...register("email")}
+              />
+              <span className="text-red-500 my-1 text-xs mb-3">
+                <>{errors?.email?.message}</>
+              </span>
 
-              <form
-                className="flex flex-col w-4/5 "
-                onSubmit={handleSubmit(handleClickSubimit)}
-              >
-                <>
-                  <label className=" ">Nome Completo</label>
-                  <input
-                    type="text"
-                    className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 "
-                    {...register("name")}
-                  />
-                  <span className="text-red-500 my-1 text-xs">
-                    <>{errors?.name?.message}</>
-                  </span>
-                </>
-                <>
-                  <label>Nome de usuário</label>
-                  <input
-                    type="text"
-                    className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-                    {...register("username")}
-                  />
-                  <span className="text-red-500 my-1 text-xs">
-                    <>{errors?.username?.message}</>
-                  </span>
-                </>
-                <>
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    autoComplete="current-email"
-                    className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-                    {...register("email")}
-                  />
-                  <span className="text-red-500 my-1 text-xs">
-                    <>{errors?.email?.message}</>
-                  </span>
-                </>
-                <>
-                  <label>Senha</label>
-                  <input
-                    type="password"
-                    {...register("password")}
-                    autoComplete="current-password"
-                    className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
-                  />
-                  <span className="text-red-500 my-1 text-xs">
-                    <>{errors?.password?.message}</>
-                  </span>
-                </>
-                <>
-                  <label>Confirme a senha</label>
-                  <input
-                    type="password"
-                    autoComplete="current-password"
-                    className="border rounded-md drop-shadow h-8 focus:outline-none mb-6"
-                    {...register("confirmPassword")}
-                  />
-                  <span className="text-red-500 my-1 text-xs">
-                    <>{errors?.confirmPassword?.message}</>
-                  </span>
-                </>
-                <input
-                  type="file"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-6"
-                  name="image"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    if (!e.target.files) return;
+              <label>Senha</label>
+              <input
+                type="password"
+                {...register("password")}
+                autoComplete="current-password"
+                className="border rounded-md drop-shadow h-8 focus:outline-none "
+              />
+              <span className="text-red-500 my-1 text-xs mb-3">
+                <>{errors?.password?.message}</>
+              </span>
 
-                    setImage(e.target.files[0]);
-                  }}
-                />
-                {image ? (
-                  <div className="flex justify-center items-center mb-6">
-                    <img
-                      src={URL.createObjectURL(image)}
-                      alt="image"
-                      width="200"
-                      height="200"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex justify-center items-center mb-6">
-                    <img src={img} alt="image" width="150" height="150" />
-                  </div>
-                )}
-                <div className="flex justify-center items-center">
-                  <button
-                    type="submit"
-                    className=" border text-white text-xl rounded-md drop-shadow bg-green-500 hover:bg-green-300 w-4/5 p-2"
-                  >
-                    Cadastrar
-                  </button>
+              <label>Confirme a senha</label>
+              <input
+                type="password"
+                autoComplete="current-password"
+                className="border rounded-md drop-shadow h-8 focus:outline-none "
+                {...register("confirmPassword")}
+              />
+              <span className="text-red-500 my-1 text-xs mb-6">
+                <>{errors?.confirmPassword?.message}</>
+              </span>
+
+              <input
+                type="file"
+                className="block w-full text-sm border rounded drop-shadow focus:outline-none mb-6 file:mr-4 file:py-2 file:px-4
+                file:rounded file:border-0
+                file:text-sm file:font-semibold
+                file:bg-orange-500 file:text-white
+                hover:file:bg-orange-400
+                file:cursor-pointer 
+                "
+                name="image"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (!e.target.files) return;
+
+                  setImage(e.target.files[0]);
+                }}
+              />
+              {image ? (
+                <div className="flex justify-center items-center mb-6">
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="image"
+                    width="200"
+                    height="200"
+                  />
                 </div>
-              </form>
-              {status.type === "success" && status.error === false ? (
-                <p className=" text-green-500 mt-3 text-center">
-                  {status.message}
-                </p>
               ) : (
-                ""
+                <div className="flex justify-center items-center mb-6">
+                  <img src={img} alt="image" width="150" height="150" />
+                </div>
               )}
-              {status.type === "success" && status.error === true ? (
-                <p className=" text-red-500 mt-3 text-center">
-                  {status.message}
-                </p>
-              ) : (
-                ""
-              )}
-              {status.type === "error" ? (
-                <p className="text-red-500 mt-3 text-center">
-                  {status.message}
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
+              <div className="flex justify-center items-center">
+                <button
+                  type="submit"
+                  className=" border text-white text-xl rounded-md drop-shadow bg-orange-500 hover:bg-orange-400 w-1/2 p-2"
+                >
+                  Cadastrar
+                </button>
+              </div>
+            </form>
+            {status.type === "success" && status.error === false ? (
+              <p className=" text-green-500 mt-3 text-center">
+                {status.message}
+              </p>
+            ) : (
+              ""
+            )}
+            {status.type === "success" && status.error === true ? (
+              <p className=" text-red-500 mt-3 text-center">{status.message}</p>
+            ) : (
+              ""
+            )}
+            {status.type === "error" ? (
+              <p className="text-red-500 mt-3 text-center">{status.message}</p>
+            ) : (
+              ""
+            )}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };

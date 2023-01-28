@@ -18,7 +18,7 @@ module.exports = {
   },
 
   async store(req, res) {
-    const { name, username, email, password } = req.body;
+    const { name, username, email, password, usertype } = req.body;
     const hash = await bcrypt.hash(password, 8);
     if (req.file) {
       if (req.body) {
@@ -27,6 +27,7 @@ module.exports = {
              await User.create({
               name,
               username,
+              type: usertype,
               email,
               password: hash,
               image: req.file.filename,

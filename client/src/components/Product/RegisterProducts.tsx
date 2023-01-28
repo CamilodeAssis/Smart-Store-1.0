@@ -90,13 +90,13 @@ export const RegisterProducts = () => {
     <>
       <section className="flex ">
         <Menu />
-        <div className="w-full">
-          <NavBar color={color} desc={desc} />
-          <div className="flex  justify-center items-center h-auto  bg-grayBG w-full p-12">
-            <div className="flex bg-white w-2/6 flex-col items-center h-auto rounded-md p-6">
+        <div className="w-full flex flex-col items-center">
+          <NavBar />
+          <div className="flex  justify-center items-center h-auto  bg-grayBG w-4/5 my-2 p-12">
+            <div className="flex bg-white w-1/2 flex-col items-center h-auto rounded-md p-6">
               <div className="mb-6">
                 <div className="flex justify-center items-center flex-col gap-3">
-                  <ImBoxAdd size={60} className=" text-green-500" />
+                  <ImBoxAdd size={60} className=" text-orange-500" />
                   <h1 className="font-bold text-2xl">Registre um Produto</h1>
                 </div>
               </div>
@@ -109,20 +109,20 @@ export const RegisterProducts = () => {
                 <label className=" ">Nome</label>
                 <input
                   type="text"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 "
+                  className="border rounded-md drop-shadow h-8 focus:outline-none  "
                   {...register("name")}
                 />
-                <span className="text-red-500 my-1 text-xs">
+                <span className="text-red-500 my-1 text-xs mb-3">
                   <>{errors?.name?.message}</>
                 </span>
 
                 <label>Descrição</label>
                 <input
                   type="text"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none "
                   {...register("description")}
                 />
-                <span className="text-red-500 my-1 text-xs">
+                <span className="text-red-500 my-1 text-xs mb-3">
                   <>{errors?.description?.message}</>
                 </span>
 
@@ -131,10 +131,10 @@ export const RegisterProducts = () => {
                   type="string"
                   // defaultValue={1}
                   autoComplete="current-email"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none "
                   {...register("value")}
                 />
-                <span className="text-red-500 my-1 text-xs">
+                <span className="text-red-500 my-1 text-xs mb-3">
                   <>{errors?.value?.message}</>
                 </span>
 
@@ -168,7 +168,7 @@ export const RegisterProducts = () => {
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
-                    className=" border text-white font-bold text-xl rounded-md drop-shadow bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-yellow-500 w-4/5 p-2"
+                    className=" border text-white font-bold text-xl rounded-md drop-shadow bg-orange-500 hover:bg-orange-400 w-1/2 p-2"
                   >
                     Cadastrar
                   </button>

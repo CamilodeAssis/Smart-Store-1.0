@@ -70,19 +70,19 @@ export const NavBar = ({ isLogin }: Props) => {
 
               <div className="flex justify-between items-center gap-3 text-white">
                 <Link to="/cart">
-                <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800 group:">
-                  <IoMdCart size={24} />
-                  <span>CARRINHO</span>
-                  <span
-                    className={`${
-                      Object.keys(productsCart).length > 0
-                        ? "bg-orange-500 rounded-full w-6 h-6 text-center group-hover:text-white"
-                        : "hidden"
-                    }`}
-                  >
-                    {Object.keys(productsCart).length}
-                  </span>
-                </div>
+                  <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800 group:">
+                    <IoMdCart size={24} />
+                    <span>CARRINHO</span>
+                    <span
+                      className={`${
+                        Object.keys(productsCart).length > 0
+                          ? "bg-orange-500 rounded-full w-6 h-6 text-center group-hover:text-white"
+                          : "hidden"
+                      }`}
+                    >
+                      {Object.keys(productsCart).length}
+                    </span>
+                  </div>
                 </Link>
                 <IoNotifications size={30} />
 
@@ -134,20 +134,20 @@ export const NavBar = ({ isLogin }: Props) => {
               </div>
 
               <div className="flex justify-between items-center gap-3 text-white">
-              <Link to="/cart">
-                <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800 group">
-                  <IoMdCart size={24} />
-                  <span>CARRINHO</span>
-                  <span
-                    className={`${
-                      Object.keys(productsCart).length > 0
-                        ? "bg-orange-500 rounded-full w-6 h-6 text-center group-hover:text-white  "
-                        : "hidden"
-                    }`}
-                  >
-                    {Object.keys(productsCart).length}
-                  </span>
-                </div>
+                <Link to="/cart">
+                  <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800 group">
+                    <IoMdCart size={24} />
+                    <span>CARRINHO</span>
+                    <span
+                      className={`${
+                        Object.keys(productsCart).length > 0
+                          ? "bg-orange-500 rounded-full w-6 h-6 text-center group-hover:text-white  "
+                          : "hidden"
+                      }`}
+                    >
+                      {Object.keys(productsCart).length}
+                    </span>
+                  </div>
                 </Link>
                 <IoNotifications size={30} />
                 <button
@@ -203,19 +203,21 @@ export const NavBar = ({ isLogin }: Props) => {
               <div className="flex justify-between items-center gap-3 text-white">
                 {!isLogin && (
                   <>
-                    <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800">
-                      <IoMdCart size={24} />
-                      <span>CARRINHO</span>
-                      <span
-                        className={`${
-                          Object.keys(productsCart).length > 0
-                            ? "bg-orange-500 rounded-full w-6 h-6 text-center"
-                            : "hidden"
-                        }`}
-                      >
-                        {Object.keys(productsCart).length}
-                      </span>
-                    </div>
+                    <Link to='/cart'>
+                      <div className="flex justify-center items-center border rounded p-2 gap-2 cursor-pointer hover:bg-white hover:text-slate-800">
+                        <IoMdCart size={24} />
+                        <span>CARRINHO</span>
+                        <span
+                          className={`${
+                            Object.keys(productsCart).length > 0
+                              ? "bg-orange-500 rounded-full w-6 h-6 text-center"
+                              : "hidden"
+                          }`}
+                        >
+                          {Object.keys(productsCart).length}
+                        </span>
+                      </div>
+                    </Link>
                     <IoNotifications size={30} />
                   </>
                 )}

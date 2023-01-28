@@ -18,15 +18,17 @@ export const Settings = () => {
       <Menu />
       <div className="w-full flex flex-col  items-center">
         <NavBar />
-        <div className="flex flex-col  bg-grayBG min-h-screen w-4/5 p-6 gap-6 mt-2">
-          <div className="flex justify-center items-center w-full">
+        <div className="flex flex-col  bg-grayBG min-h-screen w-4/5 p-6 gap- mt-2">
+          <div className="flex  flex-col justify-center items-center w-full gap-8">
             <h1 className="text-3xl">Olá. <b> {user.logged_in_user_name}</b></h1>
+
+            <h2 className="uppercase font-semibold text-xl">Opções de Administrador</h2>
             
           </div>
-          <div className=" flex justify-between  gap-6 ">
-            <div className="w-full flex flex-col ">
+          <div className=" flex justify-between   ">
+            <div className="w-full flex flex-col gap-2 ">
               <h1 className="font-bold">PRODUTOS</h1>
-              <div className="w-full h-0.5 bg-black mb-2"></div>
+              <div className="w-full h-0.5 rounded bg-black mb-2"></div>
               <div className=" grid grid-cols-3 grid-flow-row gap-6 mb-10">
                 <Link to="/product/register">
                   <div className="w-auto h-24 bg-slate-800 hover:bg-slate-700  drop-shadow rounded text-white  flex justify-center items-center font-bold text-2xl  gap-6 p-6 ">

@@ -14,8 +14,6 @@ export const ListProducts = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  
-
   const [data, setData] = useState<DataProductType[]>();
   const [url, setUrl] = useState("");
 
@@ -29,15 +27,13 @@ export const ListProducts = () => {
     return setData(response.products), setUrl(response.url);
   };
 
-  const setToLocalStorage = (key: any, value: any) => {
-    if (value.quantity > 0){
-      localStorage.setItem(key, JSON.stringify(value))
-    }else{
-      alert('Este produto nao esta disponivel no estoque no momento')
-    }
-    
-  }
+  const formatNumber = (number: number) => {
+    const formatedNumber = new Intl.NumberFormat("pt-BR", {
+      minimumIntegerDigits: 2,
+    }).format(number);
 
+    return formatedNumber;
+  };
 
   useEffect(() => {
     handleClickSubimit();
@@ -46,9 +42,9 @@ export const ListProducts = () => {
   return (
     <section className="flex ">
       <Menu />
-      <div className="w-full">
-        <NavBar color={color} desc={desc} />
-        <div className="flex flex-col bg-grayBG min-h-screen w-full p-12 items-center">
+      <div className="w-full flex flex-col items-center">
+        <NavBar />
+        <div className="flex flex-col bg-grayBG min-h-screen w-4/5 my-2 p-12 items-center">
           <form
             method="get"
             className="flex justify-between gap-3 w-4/5 mb-12"
@@ -72,7 +68,6 @@ export const ListProducts = () => {
           <div className="grid grid-cols-9 grid-flow-row gap-2 w-full h-auto">
             {data &&
               data.map((data, index) => (
-                
                 <div
                   className="flex flex-col h-auto  bg-white rounded p-2 drop-shadow-md  "
                   key={index}
@@ -90,23 +85,13 @@ export const ListProducts = () => {
                       {data.name}
                     </h1>
                     <p className="text-center text-xs"> {data.description}</p>
-                    
                   </div>
 
-                  <div >
+                  <div>
                     <div className=" w-full text-center text-xs  font-bold rounded ">
                       <hr />
-                      Quantidade em estoque: {data.quantity}
+                      Quantidade em estoque: {data.quantity && formatNumber(data.quantity)}
                       <hr />
-                    </div>
-
-                    <div className="flex flex-col justify-center items-center  w-full mt-2">
-                      <button 
-                      onClick={() => {
-                        setToLocalStorage(data.name, data)}}
-                      className="bg-gradient-to-r from-green-500 to-green-500 hover:from-green-400 hover:to-blue-500  text-sm flex rounded  text-white p-1 drop-shadow-md">
-                        Adicionar ao carrinho
-                      </button>
                     </div>
                   </div>
                 </div>

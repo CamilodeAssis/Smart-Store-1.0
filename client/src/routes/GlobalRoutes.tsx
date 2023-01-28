@@ -14,7 +14,7 @@ import { AddSaleOrder } from "../components/Sales/AddSaleOrder";
 import { RegisterNormalUsers } from "../pages/RegisterNormalUsers";
 import { NotFound } from "../pages/404";
 import { RequireAuth } from "../helpers/RequireAuth";
-import { Cart } from "../components/cart/Cart";
+import { Cart } from "../pages/Cart";
 
 import { AuthProvider } from "../contexts/auth";
 
@@ -117,14 +117,7 @@ export const GlobalRoutes = () => {
               }
             />
 
-            <Route
-              path="/cart"
-              element={
-                <RequireAuth>
-                  <Cart />
-                </RequireAuth>
-              }
-            />
+            <Route path="/cart" element={<Cart />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
