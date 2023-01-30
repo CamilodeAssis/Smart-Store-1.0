@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   const doLogin = async (email: string, password: string) => {
     let date = new Date();
-    date.setTime(date.getTime() + 600 * 1000); //86400
+    date.setTime(date.getTime() + 60 * 86400); //86400
 
     const user = await api.login({ email, password });
     Cookies.set("user", JSON.stringify(user), { expires: date });

@@ -6,7 +6,7 @@ import { DataProductType } from "../../types/dataProductType";
 
 import { AuthContext } from "../../contexts/auth";
 
-import { CartContext } from "../../contexts/cart";
+import { useCart } from "../../contexts/cart";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -15,13 +15,13 @@ type Props = {
 
 export const GridProducts = ({ searchTerm }: Props) => {
   const { user } = useContext(AuthContext);
-  const { addProductToCart } = useContext(CartContext);
+  const cart = useCart();
 
   const navigate = useNavigate();
 
   
   const [data, setData] = useState<DataProductType[]>();
-  const [url, setUrl] = useState();
+ 
 
  
   const getProductsByDepartment = async () => {
@@ -31,30 +31,19 @@ export const GridProducts = ({ searchTerm }: Props) => {
     if (!response) {
       <p>carregando</p>;
     }
-    return setData(response.products), setUrl(response.url);
+    return setData(response.products), cart.getUrl(response.url);
   };
 
-  const formatNumber = (number: number) => {
-    const formatedNumber = new Intl.NumberFormat("pt-BR", {
-      minimumIntegerDigits: 2,
-    }).format(number);
-
-    return formatedNumber;
-  };
-
-  const formatMoney = (money: number) => {
-    const dinheiroFormatado = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(money);
-
-    return dinheiroFormatado;
-  };
 
   const add = (data: DataProductType) => {
     if (user) {
+      if(Object.keys(cart.productsCart).length < 6){
+        cart.addProductToCart(data);
+      }else{
+        alert("Carrinho cheio. Limite de 6 itens por carrinho")
+      }
+     
       
-      addProductToCart(data);
     } else {
       alert(
         "Você precisa estar logado para adicionar items ao carrinho. Você será redirecionado à página de login."
@@ -82,14 +71,14 @@ export const GridProducts = ({ searchTerm }: Props) => {
                   key={index}
                 >
                   <div className="border border-orange-500 rounded text-orange-500 text-xs text-center">
-                    {data.quantity && formatNumber(data.quantity)} unidades
+                    {data.quantity && cart.formatNumber(data.quantity)} unidades
                     disponiveis
                   </div>
                   <div className="flex flex-col h-full justify-center">
                     <div className="h-24  flex justify-center items-center ">
                       <img
                         className="w-20 h-auto mb-2 "
-                        src={url + data.image}
+                        src={cart.url+ data.image}
                         alt=""
                       />
                     </div>
@@ -101,7 +90,7 @@ export const GridProducts = ({ searchTerm }: Props) => {
 
                   <div className="flex flex-col items-center">
                     <span className="text-center text-orange-500 font-bold">
-                      {data.sale_value && formatMoney(data.sale_value)}
+                      {data.sale_value && cart.formatMoney(data.sale_value)}
                     </span>
                     <span className="text-gray-600 text-xs">Valor à vista</span>
                   </div>
