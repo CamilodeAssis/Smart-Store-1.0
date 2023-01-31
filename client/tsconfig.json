@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["node_modules/yup"]
+    "typeRoots": ["node_modules/yup"],
+   
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

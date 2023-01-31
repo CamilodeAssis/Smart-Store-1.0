@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import { FaBox } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaFileInvoice } from "react-icons/fa";
+import { BiUserPlus, BiUser } from "react-icons/bi"
+
+
 
 import { AuthContext } from "../contexts/auth";
 
@@ -28,7 +31,7 @@ export const Settings = () => {
           <div className=" flex justify-between   ">
             <div className="w-full flex flex-col gap-2 ">
               <h1 className="font-bold">PRODUTOS</h1>
-              <div className="w-full h-0.5 rounded bg-black mb-2"></div>
+              <div className="w-full h-0.5 rounded bg-slate-800 mb-2"></div>
               <div className=" grid grid-cols-3 grid-flow-row gap-6 mb-10">
                 <Link to="/product/register">
                   <div className="w-auto h-24 bg-slate-800 hover:bg-slate-700  drop-shadow rounded text-white  flex justify-center items-center font-bold text-2xl  gap-6 p-6 ">
@@ -50,23 +53,23 @@ export const Settings = () => {
                 </Link>
               </div>
 
-              <h1 className="font-bold">USERS</h1>
-              <div className="w-full h-0.5 bg-black mb-2"></div>
+              <h1 className="font-bold"> USERS</h1>
+              <div className="w-full h-0.5 rounded bg-slate-800 mb-2"></div>
               <div className=" grid grid-cols-3 grid-flow-row gap-6">
                 <Link to="/user/register">
-                  <div className="w-auto h-24 bg-slate-800 hover:bg-slate-700 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl  ">
+                  <div className="w-auto h-24 bg-slate-800 hover:bg-slate-700 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl gap-6 p-6 ">
+                    <BiUserPlus size={40}/>
                     Cadrastrar usuarios
                   </div>
                 </Link>
                 <Link to="/user/consult">
-                  <div className="w-auto h-24 bg-slate-800 hover:bg-slate-700 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl ">
-                    Consultar Usuarios
+                  <div className="w-auto h-24 bg-slate-800 hover:bg-slate-700 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl  gap-6 p-6">
+                  <BiUser size={40}/>
+                    Editar Usuarios
                   </div>
                 </Link>
 
-                <div className="w-auto h-24 bg-slate-800 hover:bg-slate-700 drop-shadow rounded text-white flex justify-center items-center font-bold text-2xl ">
-                  Editar Usuarios
-                </div>
+              
               </div>
             </div>
           </div>

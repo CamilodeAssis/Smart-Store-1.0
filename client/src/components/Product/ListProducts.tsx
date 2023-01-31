@@ -37,7 +37,7 @@ export const ListProducts = () => {
 
   useEffect(() => {
     handleClickSubimit();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <section className="flex ">
@@ -59,43 +59,60 @@ export const ListProducts = () => {
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-yellow-500 text-white font-bold rounded p-2 drop-shadow"
+              className="bg-orange-500 hover:bg-orange-400 text-white font-bold rounded p-2 drop-shadow"
             >
               Pesquisar
             </button>
           </form>
+          <div className="flex justify-center items-center">
+            <div
+              className={`grid grid-cols-${data?.length} grid-flow-row gap-2 w-full h-auto`}
+            >
+              {data &&
+                data.map((data, index) => (
+                  <div
+                    className="flex flex-col h-auto w-40  bg-white rounded p-1 drop-shadow-md  "
+                    key={index}
+                  >
+                    <div className="flex flex-col h-full j mb-2">
+                      <div className="h-24  flex justify-center items-center ">
+                        <img
+                          className="w-20 h-auto mb-2 "
+                          src={url + data.image}
+                          alt=""
+                        />
+                      </div>
 
-          <div className="grid grid-cols-9 grid-flow-row gap-2 w-full h-auto">
-            {data &&
-              data.map((data, index) => (
-                <div
-                  className="flex flex-col h-auto  bg-white rounded p-2 drop-shadow-md  "
-                  key={index}
-                >
-                  <div className="flex flex-col h-full j mb-2">
-                    <div className="h-24  flex justify-center items-center ">
-                      <img
-                        className="w-20 h-auto mb-2 "
-                        src={url + data.image}
-                        alt=""
-                      />
+                      <h1 className="font-bold  text-center text-sm mb-2">
+                        {data.name}
+                      </h1>
+                      <span className="text-center text-xs">
+                        {" "}
+                        {data.description}
+                      </span>
                     </div>
 
-                    <h1 className="font-bold  text-center text-sm mb-2">
-                      {data.name}
-                    </h1>
-                    <p className="text-center text-xs"> {data.description}</p>
-                  </div>
-
-                  <div>
-                    <div className=" w-full text-center text-xs  font-bold rounded ">
-                      <hr />
-                      Quantidade em estoque: {data.quantity && formatNumber(data.quantity)}
-                      <hr />
+                    <div>
+                      <div className=" w-full text-center text-xs rounded ">
+                        <hr />
+                        <span className="text-center text-xs ">
+                          {" "}
+                          Numero de registro: {data.id}
+                        </span>
+                        <hr />
+                        Quantidade em estoque:{" "}
+                        {data.quantity && formatNumber(data.quantity)}
+                        <hr />
+                      </div>
+                    </div>
+                    <div className="flex justify-center text-xs items-center gap-2 w-full mt-2">
+                      <button className="bg-orange-500 p-1 text-white rounded w-4/5 hover:bg-orange-400">
+                        Editar
+                      </button>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
         </div>
       </div>

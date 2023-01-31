@@ -29,7 +29,7 @@ export const Carousel = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    sliderRef.current?.addEventListener("load", startSlider);
+    window.addEventListener("load", startSlider);
     sliderRef.current?.addEventListener("mouseover", pauseSlider);
     sliderRef.current?.addEventListener("mouseleave", startSlider);
   }, []);

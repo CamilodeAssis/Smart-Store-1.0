@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../data/api";
 import { Menu } from "../Menu";
 import { NavBar } from "../NavBar/NavBar";
 
 import { DataType } from "../../types/dataType";
-
+import { AuthContext } from "../../contexts/auth";
 
 export const ListUsers = () => {
-  const color = "#3b82f6"
-  const desc = "Users List";
+  const { user } = useContext(AuthContext);
 
   const [data, setData] = useState<DataType[]>();
 
@@ -24,31 +23,61 @@ export const ListUsers = () => {
     apiData();
   }, []);
 
- 
-
   return (
     <section className="flex ">
       <Menu />
-      <div className="w-full">
+      <div className="w-full flex flex-col items-center">
         <NavBar />
-        <div className="flex flex-col bg-grayBG min-h-screen w-full p-12">
-            <div className="flex flex-col justify-center p-2">
+        <div className="flex flex-col items-center bg-grayBG  min-h-screen w-4/5 py-4 my-2 gap-4">
+          <div className="flex px-20 gap-4 w-full">
+            <input
+              className="w-full rounded outline-none focus:outline-none"
+              type="text"
+              name=""
+              id=""
+            />
+            <button className="bg-orange-500 hover:bg-orange-400 px-2 py-1 text-white rounded  ">
+              Buscar
+            </button>
+          </div>
+          <div className="grid grid-cols-4 grid-flow-row gap-2 ">
             {data &&
-              data.map((data, index) => (
-                <div className="mb-3 bg-white rounded p-2 drop-shadow-md" key={index}>
-                  <ul>
-                    <li>
-                      <span className="font-bold">Name:</span> {data.name}
-                    </li>
-                    <li>
-                      <span className="font-bold">Username:</span>{" "}
-                      {data.username}
-                    </li>
-                    <li>
-                      <span className="font-bold">Email:</span> {data.email}
-                    </li>
-                  </ul>
-                  
+              data.map((dataUser, index) => (
+                <div className="flex flex-col justify-center items-center bg-white border  w-[280px]  rounded gap-4 p-2  ">
+                  <div className="flex justify-center items-center">
+                    <div className=" flex justify-center items-center rounded-full overflow-hidden  w-20 h-20 border border-orange-500">
+                      <img
+                        className="w-20 h-auto mb-2 "
+                        src={user.url + dataUser.image}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+
+                  <div className="text-sm  ">
+                    <ul>
+                      <li>
+                        <b>Nome:</b> {dataUser.name}
+                      </li>
+                      <li>
+                        <b>Username:</b> {dataUser.username}
+                      </li>
+                      <li>
+                        <b>Email:</b> {dataUser.email}
+                      </li>
+                      <li>
+                        <b>Tipo:</b> {dataUser.type}
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="flex justify-center items-center gap-2 w-full">
+                    <button className="bg-orange-500 p-1 text-white rounded w-4/5 hover:bg-orange-400">
+                      Editar
+                    </button>
+                    <button className="bg-red-500 p-1 text-white rounded w-4/5 hover:bg-red-400">
+                      Excluir
+                    </button>
+                  </div>
                 </div>
               ))}
           </div>
