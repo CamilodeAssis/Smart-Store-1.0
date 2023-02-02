@@ -1,4 +1,4 @@
-Aplicação para gerenciamento de um sistema para lojas e empresas</br>
+Aplicação e-commerce para lojas /br>
 </br>
 🚧 Em desenvolvimento 🚧</br>
 
