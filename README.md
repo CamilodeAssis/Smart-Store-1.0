@@ -1,4 +1,4 @@
-Aplicação e-commerce para lojas /br>
+Aplicação e-commerce para lojas
 </br>
 🚧 Em desenvolvimento 🚧</br>
 
