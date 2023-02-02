@@ -20,107 +20,111 @@ import { AuthProvider } from "../contexts/auth";
 
 import { CartProvider } from "../contexts/cart";
 
+import { SumProvider } from "../contexts/sum";
+
 export const GlobalRoutes = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Home />} />
+          <SumProvider>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Home />} />
 
-            <Route
-              path="/dashboard"
-              element={
-                <RequireAuth>
-                  <Dashboard />
-                </RequireAuth>
-              }
-            />
+              <Route
+                path="/dashboard"
+                element={
+                  <RequireAuth>
+                    <Dashboard />
+                  </RequireAuth>
+                }
+              />
 
-            <Route path="/register" element={<RegisterNormalUsers />} />
+              <Route path="/register" element={<RegisterNormalUsers />} />
 
-            <Route
-              path="/user/register"
-              element={
-                <RequireAuth>
-                  <RegisterUsers />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/user/consult"
-              element={
-                <RequireAuth>
-                  <ListUsers />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/user/edit"
-              element={
-                <RequireAuth>
-                  <ListUsers />
-                </RequireAuth>
-              }
-            />
+              <Route
+                path="/user/register"
+                element={
+                  <RequireAuth>
+                    <RegisterUsers />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/user/consult"
+                element={
+                  <RequireAuth>
+                    <ListUsers />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/user/edit"
+                element={
+                  <RequireAuth>
+                    <ListUsers />
+                  </RequireAuth>
+                }
+              />
 
-            <Route
-              path="/product/register"
-              element={
-                <RequireAuth>
-                  <RegisterProducts />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/product/consult"
-              element={
-                <RequireAuth>
-                  <ListProducts />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/product/edit"
-              element={
-                <RequireAuth>
-                  <EditProduct />
-                </RequireAuth>
-              }
-            />
+              <Route
+                path="/product/register"
+                element={
+                  <RequireAuth>
+                    <RegisterProducts />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/product/consult"
+                element={
+                  <RequireAuth>
+                    <ListProducts />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/product/edit"
+                element={
+                  <RequireAuth>
+                    <EditProduct />
+                  </RequireAuth>
+                }
+              />
 
-            <Route
-              path="/sales"
-              element={
-                <RequireAuth>
-                  <Sales />
-                </RequireAuth>
-              }
-            />
+              <Route
+                path="/sales"
+                element={
+                  <RequireAuth>
+                    <Sales />
+                  </RequireAuth>
+                }
+              />
 
-            <Route
-              path="sales/saleOrder"
-              element={
-                <RequireAuth>
-                  <AddSaleOrder />
-                </RequireAuth>
-              }
-            />
+              <Route
+                path="sales/saleOrder"
+                element={
+                  <RequireAuth>
+                    <AddSaleOrder />
+                  </RequireAuth>
+                }
+              />
 
-            <Route
-              path="/settings"
-              element={
-                <RequireAuth>
-                  <Settings />
-                </RequireAuth>
-              }
-            />
+              <Route
+                path="/settings"
+                element={
+                  <RequireAuth>
+                    <Settings />
+                  </RequireAuth>
+                }
+              />
 
-            <Route path="/cart" element={<Cart />} />
+              <Route path="/cart" element={<Cart />} />
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </SumProvider>
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>

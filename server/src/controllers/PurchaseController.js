@@ -1,20 +1,20 @@
 const Invoice = require("../models/Invoice");
 const User = require("../models/User");
 const Product = require("../models/Product");
+const Purchase = require("../models/Purchase");
+
 
 module.exports = {
-  async index(req, res) {
-    const { user_id } = req.params;
 
-    const user = await User.findByPk(user_id, {
-      include: { association: "invoices" },
-    });
-    return res.json(user);
+  async index(req, res) {
+    const sales = await Purchase.findAll();
+    return res.json(sales);
+    
   },
 
   async store(req, res) {
     const { user_id } = req.params;
-    const { invoice_number, cnpj, date, name, quantity, value, username } =
+    const { date, product_name, quantity, sale_value, username } =
       req.body;
 
     const user = await User.findByPk(user_id);
@@ -23,37 +23,36 @@ module.exports = {
       return res.status(400).json({ error: "Usuário não encontrado" });
     }
 
-    const convertValue = parseInt(value);
 
     await Product.findOne({
       where: {
-        name,
+        name: product_name,
       },
     }).then ( async (product) => {    
         if (product){
-          await Invoice.create({
-            invoice_number,
-            cnpj,
+          await Purchase.create({
             date,
-            name,
+            product_name,
             quantity,
-            value: convertValue,
+            sale_value,
             username,
             user_id,
           });
-
-          product.quantity += quantity;
-          product.amount_value =  product.quantity * product.sale_value;
-          await product.save();
+          if (product.quantity > 0){
+            product.quantity -= quantity;
+            product.amount_value =  product.quantity * product.sale_value;
+            await product.save();
+          }
+          
           
           return res.json({
             error: false,
-            message: "Nota cadastrada com sucesso",
+            message: "Compra realizada com sucesso",
           });
         }else{ 
           return res.json({
             error: true,
-            message: "Ocorreu um erro tentar cadastrar a nota no produto selecionado",
+            message: `Ocorreu um erro ao comprar ${product.name}`,
           });
         }
     } );

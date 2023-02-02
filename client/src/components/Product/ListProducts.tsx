@@ -3,14 +3,13 @@ import { api } from "../../data/api";
 import { Menu } from "../Menu";
 import { NavBar } from "../NavBar/NavBar";
 import { useForm } from "react-hook-form";
-import { FaCartPlus, FaPlus, FaMinus } from "react-icons/fa";
+
 
 import { DataProductType } from "../../types/dataProductType";
-import { el } from "date-fns/locale";
+
 
 export const ListProducts = () => {
-  const color = "#3b82f6";
-  const desc = "Consultar estoque";
+
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -66,12 +65,12 @@ export const ListProducts = () => {
           </form>
           <div className="flex justify-center items-center">
             <div
-              className={`grid grid-cols-${data?.length} grid-flow-row gap-2 w-full h-auto`}
+              className={`grid grid-cols-7 grid-flow-row gap-2 w-full h-auto`}
             >
               {data &&
                 data.map((data, index) => (
                   <div
-                    className="flex flex-col h-auto w-40  bg-white rounded p-1 drop-shadow-md  "
+                    className="flex flex-col h-auto w-44  bg-white rounded p-1 drop-shadow-md  "
                     key={index}
                   >
                     <div className="flex flex-col h-full j mb-2">

@@ -11,8 +11,6 @@ import { NavBar } from "../NavBar/NavBar";
 import { Menu } from "../Menu";
 import uploadapi from "../../data/api";
 
-
-
 const schema = object({
   name: string()
     .required("Campo obrigatório")
@@ -22,26 +20,30 @@ const schema = object({
     .min(1.0, "O valor deve ser maior que 0")
     .required("Campo obrigatório")
     .typeError("Campo obrigatório"),
-
+    sale_value: string()
+    .min(1.0, "O valor deve ser maior que 0")
+    .required("Campo obrigatório")
+    .typeError("Campo obrigatório"),
 });
+
+const options = ["hardware", "accessory", "console", "games"];
 
 export const RegisterProducts = () => {
   const [image, setImage] = useState<any>("");
+  const [selectedValue, setSelectedValue] = useState(options[0]);
+ 
   const [status, setStatus] = useState({
     type: "",
     message: "",
     error: false,
   });
 
-  const desc = "Register Products";
-  const color = "#22C55E";
-
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-    reset
+    reset,
   } = useForm({ resolver: yupResolver(schema) });
 
   const handleClickSubimit = async (data: any) => {
@@ -51,6 +53,9 @@ export const RegisterProducts = () => {
     formData.append("value", data.value);
     formData.append("quantity", data.quantity);
     formData.append("image", image);
+    formData.append("department", selectedValue);
+    console.log(data.sale_value);
+    formData.append("sale_value", data.sale_value);
 
     const headers = {
       headers: {
@@ -82,8 +87,8 @@ export const RegisterProducts = () => {
         }
       });
 
-      reset();
-      setImage('')
+    reset();
+    setImage("");
   };
 
   return (
@@ -126,7 +131,7 @@ export const RegisterProducts = () => {
                   <>{errors?.description?.message}</>
                 </span>
 
-                <label>Valor da unidade</label>
+                <label>Valor de compra</label>
                 <input
                   type="string"
                   // defaultValue={1}
@@ -134,15 +139,52 @@ export const RegisterProducts = () => {
                   className="border rounded-md drop-shadow h-8 focus:outline-none "
                   {...register("value")}
                 />
-                <span className="text-red-500 my-1 text-xs mb-3">
+                <span className="text-red-500 my-1 text-xs mb-6">
                   <>{errors?.value?.message}</>
                 </span>
 
-                <label>Imagem do produto</label>
+                <label>Valor de venda</label>
+                <input
+                  type="string"
+                  // defaultValue={1}
+                  autoComplete="current-email"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none "
+                  {...register("sale_value")}
+                />
+                <span className="text-red-500 my-1 text-xs mb-6">
+                  <>{errors?.sale_value?.message}</>
+                </span>
+
+                <select
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-6 cursor-pointer"
+                  value={selectedValue}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                    setSelectedValue(e.target.value)
+                  }
+                >
+                  {options &&
+                    options.map((options, index: any) => (
+                      <option
+                        className="bg-gray-100 cursor-pointer"
+                        key={index}
+                        value={options}
+                      >
+                        {options}
+                      </option>
+                    ))}
+                </select>
+
+                <label className="text-center mb-1">Imagem do produto</label>
 
                 <input
                   type="file"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-6"
+                  className="block w-full text-sm border rounded drop-shadow focus:outline-none mb-6 file:mr-4 file:py-2 file:px-4
+                  file:rounded file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-orange-500 file:text-white
+                  hover:file:bg-orange-400
+                  file:cursor-pointer 
+                  "
                   name="image"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;

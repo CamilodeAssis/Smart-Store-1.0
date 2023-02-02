@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AllOptions, UserOptions } from "../data/options";
+import { AllOptions } from "../data/options";
 import { OptionsType } from "../types/optionsType";
 import { HiMenuAlt3 } from "react-icons/hi";
 
@@ -9,10 +9,10 @@ import { AuthContext } from "../contexts/auth";
 
 export const Menu = () => {
   const { doLogout, user } = useContext(AuthContext);
-
   const [menuOptions, setMenuOptions] = useState<OptionsType[]>(AllOptions);
-  const [userOptions, setUserOptions] = useState<OptionsType[]>(UserOptions);
   const [isOpen, setIsOpen] = useState(false);
+
+  
 
   if (user.logged_in_user_type === "admin") {
     return (

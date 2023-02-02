@@ -15,7 +15,7 @@ class Product extends Model {
             sequelize
         })
     }
-    
+  
 }
 
 module.exports = Product;

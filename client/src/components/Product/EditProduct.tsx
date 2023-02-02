@@ -56,8 +56,6 @@ export const EditProduct = () => {
     error: false,
   });
 
-  const desc = "Entrada no estoque";
-  const color = "#f97316";
 
   const {
     register,
@@ -114,7 +112,7 @@ export const EditProduct = () => {
       <section className="flex ">
         <Menu />
         <div className="w-full flex flex-col items-center">
-          <NavBar color={color} desc={desc} />
+          <NavBar />
           <div className="flex  justify-center items-center h-full  bg-grayBG w-4/5 p-6 mt-2">
             <div className="flex bg-white w-2/6 flex-col items-center h-auto rounded-md p-6">
               <div className="mb-6">

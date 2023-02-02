@@ -6,6 +6,7 @@ import { DataType } from '../types/dataType'
 import { DataProductType } from '../types/dataProductType'
 import { BodyTypes } from '../types/bodyType'
 import { DataInvoiceType } from '../types/dataInvoiceType'
+import { DataPurchaseType } from '../types/dataPurchaseType'
 
 export default axios.create({
     baseURL:   "http://localhost:3333/",//"http://18.231.50.132:3333"
@@ -48,6 +49,15 @@ export const api = {
         let response = await axios.get(`${BASE}/users`);
         return response.data;
     },
+    getProducts: async () => {
+        let response = await axios.get(`${BASE}/dashboard/products`);
+        return response.data;
+    },
+
+    getSales: async () => {
+        let response = await axios.get(`${BASE}/purchases`);
+        return response.data;
+    },
 
     getProductByQuery: async (query: string) => {
         let response = await axios.get(`${BASE}/products${query}`);
@@ -69,6 +79,17 @@ export const api = {
             quantity,
             value,
             username
+        });
+        return response.data;
+    },
+    registerPurchases: async ({ userId, date, product_name, quantity, sale_value,username }: DataPurchaseType) => {
+        let response = await axios.post(`${BASE}/users/${userId}/purchases`, {
+            date,
+            product_name,
+            quantity,
+            sale_value,
+            username,
+          
         });
         return response.data;
     },

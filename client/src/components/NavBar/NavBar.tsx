@@ -16,18 +16,6 @@ type Props = {
   isLogin?: boolean;
 };
 
-const departments = [
-  { state: false, name: "HARDWARE", link: "/hardware" },
-  { state: false, name: "PERIFÉRICOS", link: "/perifericos" },
-  { state: false, name: "GAMES", link: "/games" },
-];
-
-const options = [
-  { name: "DEPARTAMENTOS" },
-  { name: "NOVIDADES" },
-  { name: "PROMOÇÕES" },
-];
-
 export const NavBar = ({ isLogin }: Props) => {
   const { user, doLogout } = useContext(AuthContext);
   const { productsCart } = useContext(CartContext);

@@ -2,6 +2,8 @@ import { createContext, useState, useEffect, useContext } from "react";
 
 import { AuthContext } from "./auth";
 
+import { api } from "../data/api";
+
 import { DataProductType } from "../types/dataProductType";
 import { string } from "yup";
 
@@ -22,6 +24,8 @@ interface CartContextProps {
   subValue: any;
   sumValue: number;
   sumTotal: () => void;
+  handleClickBuy: (data: any) => void;
+  status: { type: string; message: string; error: boolean; };
 }
 
 export const CartContext = createContext<CartContextProps>(
@@ -34,8 +38,13 @@ export const CartProvider = ({ children }: Props) => {
   const [url, setUrl] = useState("");
   const [sumValue, setSumValue] = useState(0);
   const [subValue, setSubValue] = useState(0);
+  
 
-
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+    error: false,
+  });
 
   useEffect(() => {
     const cartLocalStorage = window.localStorage.getItem(
@@ -57,7 +66,7 @@ export const CartProvider = ({ children }: Props) => {
   };
 
   const addProductToCart = (product: any) => {
-    sumTotal()
+    sumTotal();
     setProductsCart((old: any) => {
       let quantity = 0;
       if (old[product.id]) {
@@ -184,6 +193,31 @@ export const CartProvider = ({ children }: Props) => {
     return dinheiroFormatado;
   };
 
+  const handleClickBuy = async (data: any) => {
+    const response = await api.registerPurchases({
+      userId: data.userId,
+      date: data.date,
+      product_name: data.product_name,
+      quantity: data.quantity,
+      sale_value: data.sale_value,
+      username: data.username,
+    });
+
+    if (response) {
+      setStatus({
+        type: "success",
+        message: response.message,
+        error: response.error,
+      });
+    } else {
+      setStatus({
+        type: "error",
+        message: "Problema com o servidor, tente novamente mais tarde",
+        error: true,
+      });
+    }
+  };
+
   const contextValue = {
     productsCart,
     addProductToCart,
@@ -197,6 +231,8 @@ export const CartProvider = ({ children }: Props) => {
     subValue,
     sumValue,
     sumTotal,
+    handleClickBuy,
+    status
   };
 
   return (

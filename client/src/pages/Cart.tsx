@@ -31,10 +31,35 @@ export const Cart = () => {
     decQuantity,
     sumValue,
     sumTotal,
+    handleClickBuy,
+    status,
   } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
+
   const [freteValue, setFreteValue] = useState(0);
+
+  const handleClickBuyOrder = () => {
+    Object.keys(productsCart).map( key =>{
+      
+      const date = new Date()
+      const data = {
+        userId: user.logged_in_user_id,
+        date,
+        product_name: productsCart[key].product.name,
+        quantity: productsCart[key].quantity,
+        sale_value: productsCart[key].subValue,
+        username: user.logged_in_user_name 
+      }
+      if (data) {
+        handleClickBuy(data);
+        window.localStorage.removeItem(`${user.logged_in_user_name} cart`);
+        window.location.reload();
+      }
+        
+    })
+    
+  }
 
   useEffect(() => {
     sumTotal();
@@ -220,8 +245,14 @@ export const Cart = () => {
                   </span>
                 </div>
 
-                <Link to="/payment" className="flex justify-center items-center">
-                  <button className="border border-orange-500 w-44 hover:bg-orange-500 hover:text-white flex rounded  justify-center items-center text-orange-500   font-bold p-1  gap-2">
+                <Link
+                  to="/cart"
+                  className="flex justify-center items-center"
+                >
+                  <button
+                    onClick={handleClickBuyOrder}
+                    className="border border-orange-500 w-44 hover:bg-orange-500 hover:text-white flex rounded  justify-center items-center text-orange-500   font-bold p-1  gap-2"
+                  >
                     Ir para o pagamento
                   </button>
                 </Link>
@@ -230,6 +261,27 @@ export const Cart = () => {
                     Continue comprando
                   </button>
                 </Link>
+                {status.type === "success" ? (
+                  <p className=" text-green-500 mt-3 text-center">
+                    {status.message}
+                  </p>
+                ) : (
+                  ""
+                )}
+                {status.type === "success" && status.error === true ? (
+                  <p className=" text-red-500 mt-3 text-center">
+                    {status.message}
+                  </p>
+                ) : (
+                  ""
+                )}
+                {status.type === "error" ? (
+                  <p className="text-red-500 mt-3 text-center">
+                    {status.message}
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

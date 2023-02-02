@@ -10,7 +10,7 @@ module.exports = (multer({
         }
     }),
     fileFilter: (req, file, cb)=>{
-        const allowedImg = ['image/png', 'image/jpeg', 'image/jpg'].find
+        const allowedImg = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'].find
         (acceptedFormats => acceptedFormats == file.mimetype);
 
         if(allowedImg){
