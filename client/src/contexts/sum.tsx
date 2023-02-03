@@ -11,24 +11,28 @@ type Props = {
 interface SumContextProps {
   totalValue: any;
   totalSalesValue: any;
+  currentMonthName: string;
+  data: any;
+  totalSalesQuantity: any;
+  formatMoney: (number: number) => string;
 }
 
 export const SumContext = createContext<SumContextProps>({} as SumContextProps);
 
 export const SumProvider = ({ children }: Props) => {
   const monthNames = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outrubro",
+    "Novembro",
+    "Dezembro",
   ];
   const date = new Date();
   const currentMonth = date.getMonth();
@@ -40,7 +44,7 @@ export const SumProvider = ({ children }: Props) => {
 
   const [totalValue, setTotalValue] = useState<number>();
   const [totalSalesValue, setTotalSalesValue] = useState<number>();
-
+  const [totalSalesQuantity, setTotalSalesValueQuantity] = useState<number>();
 
   useEffect(() => {
     loadSales();
@@ -87,8 +91,16 @@ export const SumProvider = ({ children }: Props) => {
         0
       )
     );
+    setTotalSalesValueQuantity(
+      data?.reduce(
+        (accumulator, currentValue) =>
+          accumulator + Number(currentValue.quantity),
+        0
+      )
+    );
   };
 
+  setTotalSalesValueQuantity
 
   window.addEventListener("load", () => {
     addLocalStorage();
@@ -96,9 +108,22 @@ export const SumProvider = ({ children }: Props) => {
     
   });
 
+  const formatMoney = (money: number) => {
+    const dinheiroFormatado = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(money);
+
+    return dinheiroFormatado;
+  };
+
   const contextValue: SumContextProps = {
     totalValue,
-    totalSalesValue
+    totalSalesValue,
+    currentMonthName,
+    data,
+    formatMoney,
+    totalSalesQuantity
    
   };
 

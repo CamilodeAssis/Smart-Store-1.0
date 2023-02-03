@@ -4,7 +4,7 @@ import { Calendar } from "../components/Calendar";
 import { Weather } from "../components/Weather";
 import { MdSupportAgent } from "react-icons/md";
 import { Footer } from "../components/Footer";
-import { CashValue } from "../components/dashboard/CashValue";
+import { ItemDashboard } from "../components/dashboard/CashValue";
 import { useEffect, useState } from "react";
 import { DataProductType } from "../types/dataProductType";
 import { DataPurchaseType } from "../types/dataPurchaseType";
@@ -24,7 +24,7 @@ export const Dashboard = () => {
           <div className="flex flex-col bg-grayBG min-h-screen w-4/5 p-10 gap-12 my-2">
             <div className=" flex justify-between gap-12 ">
               <div className="w-full">
-              <CashValue />
+              <ItemDashboard />
                 
               </div>
             

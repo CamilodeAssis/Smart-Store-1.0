@@ -55,6 +55,8 @@ export const Carousel = () => {
     setCurrentIndex(count);
   };
 
+ 
+
   return (
     <div
       ref={sliderRef}
