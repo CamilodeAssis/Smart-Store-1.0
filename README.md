@@ -72,6 +72,8 @@
  npm run dev ou yarn dev</br>
 7 - Abra o navegador em http://localhost:5173 para ver o projeto em execução.</br>
 </br>
-# Para rodar o Server NodeJs projeto na sua máquina basta seguir os mesmo passos acima porem acessar direterio Smart-Store-1.0/server e rodar o comando npm run dev ou yarn dev</br>
+
+# Para rodar o Server NodeJs projeto na sua máquina basta instalar as dependencias, acessar o direterio Smart-Store-1.0/server e rodar o comando npm run dev ou yarn dev
+</br>
 </br>
 Observe que esses comandos supõem que você tenha o Node.js e o npm ou o yarn instalados em sua máquina.
