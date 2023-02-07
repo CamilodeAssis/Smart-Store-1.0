@@ -1,4 +1,4 @@
-# Aplicação web e-commerce para lojas.
+# Aplicação web para e-commerce.
 
 ### Como Usuário/Cliente você terá acesso ->
 
