@@ -56,4 +56,22 @@
 
 ## Construido com Vite
 * Vite é uma ferramenta com o objetivo de criar um ambiente de desenvolvimento simples e super rápido. Fornece uma experiência de desenvolvimento enxuta para projetos modernos.
+</br> 
+
+# Para testar e rodar o Front-End projeto na sua máquina siga o passo a passo abaixo. 
 </br>
+ 1 - Instale o Git em sua máquina, se ainda não tiver feito isso.</br>
+ 2 - Abra o terminal ou o Git Bash e navegue até o diretório onde você deseja clonar o projeto.</br>
+3 - Clone o repositório do GitHub usando o seguinte comando:</br>
+ git clone https://github.com/CamilodeAssis/Smart-Store-1.0.git</br>
+ 4 - Entre no diretório Client do projeto clonado com o seguinte comando:</br>
+ cd Smart-Store-1.0/client</br>
+ 5 - Instale as dependências do projeto com o seguinte comando:</br>
+ npm install ou yarn install</br>
+6 - Execute o projeto com o seguinte comando:</br>
+ npm run dev ou yarn dev</br>
+7 - Abra o navegador em http://localhost:5173 para ver o projeto em execução.</br>
+</br>
+# Para rodar o Server NodeJs projeto na sua máquina basta seguir os mesmo passos acima porem acessar direterio Smart-Store-1.0/server e rodar o comando npm run dev ou yarn dev</br>
+</br>
+Observe que esses comandos supõem que você tenha o Node.js e o npm ou o yarn instalados em sua máquina.
