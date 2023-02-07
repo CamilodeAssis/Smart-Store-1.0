@@ -60,7 +60,7 @@ export const Carousel = () => {
   return (
     <div
       ref={sliderRef}
-      className="w-full h-[480px] select-none relative group"
+      className="w-full h-[140px] sm:h-[220px] md:h-[260px] lg:h-[380px] xl:h-[420px] select-none relative group"
     >
       <div
         style={{ backgroundImage: `url(${photos[currentIndex].img})` }}
@@ -69,15 +69,15 @@ export const Carousel = () => {
       <div className="absolute w-full  top-1/2 transform -translate-y-1/2 px-3 flex justify-between items-center  text-white ">
         <button
           onClick={prev}
-          className="rounded-full bg-orange-500 w-10 h-10  hidden group-hover:block "
+          className="rounded-full bg-orange-500 w-5 h-5 sm:w-10 sm:h-10 hidden group-hover:block "
         >
-          <BsChevronCompactLeft size={40} />
+          <BsChevronCompactLeft className="w-5 h-5 sm:w-10 sm:h-10 " />
         </button>
         <button
           onClick={next}
-          className="rounded-full bg-orange-500 w-10 h-10  hidden group-hover:block"
+          className="rounded-full bg-orange-500 w-5 h-5 sm:w-10 sm:h-10  hidden group-hover:block"
         >
-          <BsChevronCompactRight size={40} />
+          <BsChevronCompactRight className="w-5 h-5 sm:w-10 sm:h-10"  />
         </button>
       </div>
       <div className="absolute bottom-4 right-0 left-0">
@@ -85,8 +85,8 @@ export const Carousel = () => {
           {photos.map((_, index) => (
             <div
               key={index}
-              className={`transition-all w-3 h-3 bg-orange-500 rounded-full ${
-                currentIndex === index ? "p-3" : "bg-opacity-50"
+              className={`transition-all w-2 h-2 sm:w-3 sm:h-3 bg-orange-500 rounded-full ${
+                currentIndex === index ? "p-2 sm:p-3" : "bg-opacity-50"
               } `}
             ></div>
           ))}

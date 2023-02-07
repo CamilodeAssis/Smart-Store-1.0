@@ -43,29 +43,29 @@ export const ListProducts = () => {
       <Menu />
       <div className="w-full flex flex-col items-center">
         <NavBar />
-        <div className="flex flex-col bg-grayBG min-h-screen w-4/5 my-2 p-12 items-center">
+        <div className="flex flex-col bg-grayBG min-h-screen w-4/5 my-2 p-2 lg:p-12 items-center">
           <form
             method="get"
-            className="flex justify-between gap-3 w-4/5 mb-12"
+            className="flex justify-center items-center gap-3 w-full md:w-4/5 mb-12 flex-col md:flex-row"
             action=""
             onSubmit={handleSubmit(handleClickSubimit)}
           >
             <input
-              className="flex-1 text-lg rounded focus:outline-none drop-shadow "
+              className="flex-1 text-lg rounded focus:outline-none drop-shadow h-6 md:h-8 "
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <button
               type="submit"
-              className="bg-orange-500 hover:bg-orange-400 text-white font-bold rounded p-2 drop-shadow"
+              className="bg-orange-500 hover:bg-orange-400 text-white text-xs font-bold rounded p-0.5 md:p-2 drop-shadow h-6 md:h-8 w-3/5 md:w-auto"
             >
               Pesquisar
             </button>
           </form>
           <div className="flex justify-center items-center">
             <div
-              className={`grid grid-cols-7 grid-flow-row gap-2 w-full h-auto`}
+              className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6  grid-flow-row gap-2 w-full h-auto`}
             >
               {data &&
                 data.map((data, index) => (

@@ -49,6 +49,11 @@ export const SumProvider = ({ children }: Props) => {
   useEffect(() => {
     loadSales();
     loadProducts();
+    // window.addEventListener("load", () => {
+    addLocalStorage();
+    addState();
+
+    // });
   }, []);
 
   const loadSales = async () => {
@@ -80,7 +85,8 @@ export const SumProvider = ({ children }: Props) => {
   const addState = () => {
     setTotalValue(
       products?.reduce(
-        (accumulator, currentValue) => accumulator + Number(currentValue.amount_value),
+        (accumulator, currentValue) =>
+          accumulator + Number(currentValue.amount_value),
         0
       )
     );
@@ -100,12 +106,11 @@ export const SumProvider = ({ children }: Props) => {
     );
   };
 
-  setTotalSalesValueQuantity
+  setTotalSalesValueQuantity;
 
   window.addEventListener("load", () => {
     addLocalStorage();
     addState();
-    
   });
 
   const formatMoney = (money: number) => {
@@ -123,8 +128,7 @@ export const SumProvider = ({ children }: Props) => {
     currentMonthName,
     data,
     formatMoney,
-    totalSalesQuantity
-   
+    totalSalesQuantity,
   };
 
   return (

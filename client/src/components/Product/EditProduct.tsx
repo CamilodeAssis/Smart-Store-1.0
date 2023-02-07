@@ -15,6 +15,8 @@ import { Menu } from "../Menu";
 import uploadapi from "../../data/api";
 
 import { AuthContext } from "../../contexts/auth";
+import { Footer } from "../Footer";
+
 
 const schema = object({
   invoice_number: string()
@@ -55,7 +57,6 @@ export const EditProduct = () => {
     message: "",
     error: false,
   });
-
 
   const {
     register,
@@ -109,28 +110,30 @@ export const EditProduct = () => {
 
   return (
     <>
-      <section className="flex ">
+      <section className="flex  ">
         <Menu />
-        <div className="w-full flex flex-col items-center">
+        <div className="flex flex-col items-center w-screen ">
           <NavBar />
-          <div className="flex  justify-center items-center h-full  bg-grayBG w-4/5 p-6 mt-2">
-            <div className="flex bg-white w-2/6 flex-col items-center h-auto rounded-md p-6">
-              <div className="mb-6">
+          <div className="flex  justify-center items-center h-screen  bg-grayBG w-4/5 my-2 p-2 sm:p-6 md:p-10">
+            <div className="flex bg-white w-full sm:w-3/5  flex-col items-center h-auto rounded-md p-6">
+              <div className="mb-6 w-full">
                 <div className="flex justify-center items-center flex-col gap-3">
-                  <FaFileInvoice size={60} className="text-orange-500" />
-                  <h1 className="font-bold text-2xl">Cadastro de nota</h1>
+                  <FaFileInvoice className=" text-orange-500 w-10 h-10  lg:w-14 lg:h-14 " />
+                  <h1 className="font-bold text-sm sm:text-xl md:text-2xl text-center">
+                    Cadastre uma nota
+                  </h1>
                 </div>
               </div>
 
               <form
-                className="flex flex-col w-4/5 "
+                className="flex flex-col w-full lg:w-4/5 text-xs lg:text-base "
                 encType="multipart/form-data"
                 onSubmit={handleSubmit(handleClickSubimit)}
               >
                 <label className="">Numero da nota fiscal</label>
                 <input
                   type="text"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 "
+                  className=" border rounded-md drop-shadow h-8 focus:outline-none mb-3 w-full "
                   {...register("invoice_number")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -140,7 +143,7 @@ export const EditProduct = () => {
                 <label>CNPJ</label>
                 <input
                   type="text"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 w-full"
                   {...register("cnpj")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -150,7 +153,7 @@ export const EditProduct = () => {
                 <label>Data</label>
                 <input
                   type="date"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 w-full"
                   {...register("date")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -158,7 +161,7 @@ export const EditProduct = () => {
                 </span>
                 <label>Produto </label>
                 <select
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 w-full"
                   value={selectedValue}
                   onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                     setSelectedValue(e.target.value)
@@ -183,7 +186,7 @@ export const EditProduct = () => {
                 <label>Quantidade</label>
                 <input
                   type="number"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 w-full"
                   {...register("quantity")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -193,7 +196,7 @@ export const EditProduct = () => {
                 <label>Valor total da nota</label>
                 <input
                   type="string"
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-3 w-full"
                   {...register("value")}
                 />
                 <span className="text-red-500 my-1 text-xs">
@@ -205,18 +208,17 @@ export const EditProduct = () => {
                   type="string"
                   value={user.logged_in_user_name}
                   disabled={true}
-                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-6"
+                  className="border rounded-md drop-shadow h-8 focus:outline-none mb-6 w-full"
                   {...register("username")}
                 />
                 <span className="text-red-500 my-1 text-xs">
                   <>{errors?.username?.message}</>
                 </span>
 
-                
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
-                    className=" border text-white text-xl rounded-md drop-shadow bg-orange-500 hover:bg-orange-400 w-4/5 p-2"
+                    className=" border text-white font-bold text-xs lg:text-xl rounded-md drop-shadow bg-orange-500 hover:bg-orange-400 w-4/5 lg:w-1/2 p-2"
                   >
                     Cadastrar
                   </button>
@@ -247,7 +249,9 @@ export const EditProduct = () => {
             </div>
           </div>
         </div>
+       
       </section>
+     <Footer/>
     </>
   );
 };

@@ -56,14 +56,14 @@ export const GridProducts = ({ searchTerm }: Props) => {
         <div className="w-full bg-slate-800 text-white font-bold p-2">
           <h1>{searchTerm.toUpperCase()}</h1>
         </div>
-        <div className="flex justify-center items-center">
-          <div className="grid grid-cols-6 grid-flow-row gap-2 w-full h-auto p-6">
+        <div className=" flex  justify-center items-center w-full">
+          <div className="grid  sm:w-full grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 grid-flow-row gap-3  h-auto p-6 " >
             {data &&
               data.map((data, index) => {
                 if (data.quantity && data.quantity > 0) {
                   return (
                     <div
-                      className="flex flex-col h-[260px] w-[200px] bg-white rounded p-2 drop-shadow-md  "
+                      className="flex flex-col h-auto w-[160px] sm:w-auto bg-white rounded p-2 drop-shadow-md  "
                       key={index}
                     >
                       <div className="border border-orange-500 rounded text-orange-500 text-xs text-center">

@@ -93,7 +93,7 @@ export const RegisterNormalUsers = () => {
         <div className="w-full flex flex-col items-center">
           <NavBar isLogin={true}/>
           <div className="flex flex-col bg-white  items-center h-screen  w-4/5 ">
-            <div className="flex w-2/6 flex-col items-center justify-center rounded-md mt-10">
+            <div className="flex w-full lg:w-3/5 flex-col items-center justify-center rounded-md mt-10">
               <h1 className="text-2xl font-bold mb-10 text-black">
                 CRIAR CONTA
               </h1>
@@ -153,12 +153,17 @@ export const RegisterNormalUsers = () => {
                   <>{errors?.confirmPassword?.message}</>
                 </span>
 
-                <label className="text-center mb-2 text-black ">
+                <label className="text-center mb-2 text-black text-sm lg:text-base">
                   Escolha uma foto para seu perfil
                 </label>
                 <input
                   type="file"
-                  className="bg-white border rounded-md drop-shadow h-8 focus:outline-none mb-6 "
+                  className="block w-full text-sm border rounded drop-shadow focus:outline-none mb-6  file:py-1 file:px-0.5 lg:file:mr-4 lg:file:py-2 lg:file:px-4
+                  file:rounded file:border-0
+                  file:px-4file:text-sm file:text-xs file:font-semibold
+                  file:bg-orange-500 file:text-white
+                  hover:file:bg-orange-400
+                  file:cursor-pointer  "
                   name="image"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     if (!e.target.files) return;
@@ -189,7 +194,7 @@ export const RegisterNormalUsers = () => {
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
-                    className="text-white text-2xl font-bold bg-orange-500 hover:bg-orange-400  drop-shadow   rounded   w-4/5 p-2"
+                    className="text-white text-lg lg:text-2xl font-bold bg-orange-500 hover:bg-orange-400  drop-shadow   rounded  w-4/5 md:w-3/5 p-1 "
                   >
                     Cadastrar
                   </button>

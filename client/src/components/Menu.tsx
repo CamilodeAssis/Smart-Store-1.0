@@ -18,15 +18,15 @@ export const Menu = () => {
     return (
       <div
         className={`bg-slate-800 min-h-screen  ${
-          isOpen ? "w-72" : "w-16 "
-        }  px-4 duration-500`}
+          isOpen ? "w-72" : " w-12 sm:w-16"
+        }  px-1.5 sm:px-4 duration-500`}
       >
         
-        <div className="py-5 flex justify-end">
+        <div className="sm:py-5 flex justify-end">
          
           <HiMenuAlt3
             size={26}
-            className="cursor-pointer text-white hover:bg-slate-700"
+            className="cursor-pointer text-white hover:bg-slate-700 hidden sm:block"
             onClick={() => setIsOpen(!isOpen)}
           />
           
@@ -41,7 +41,8 @@ export const Menu = () => {
               key={index}
               className="group flex  items-center text-sm gap-3.5 font-medium p-2 hover:bg-slate-700 rounded-md"
             >
-              <div>{React.createElement(menu.icon, { size: "20" })}</div>
+
+              <div>{React.createElement(menu.icon, { size: "18"  })}</div>
               <h2
                 style={{
                   transitionDelay: `${index + 2}00ms`,

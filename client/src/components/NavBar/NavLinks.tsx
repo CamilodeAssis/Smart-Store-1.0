@@ -21,8 +21,8 @@ export const NavLinks = () => {
       {options &&
         options.map((options, index) => (
           <div key={index} className=" ">
-            <div className="  text-white cursor-pointer group h-auto ">
-              <div className="p-2 hover:bg-orange-400 ">{options.name}</div>
+            <div className="  text-white cursor-pointer group h-auto w-full ">
+              <div className="p-2 hover:bg-orange-400 w-full text-[10px] md:text-base ">{options.name}</div>
               {options.submenu && (
                 <div>
                   <div className="absolute top-[120px] z-10 hidden  group-hover:block hover:block">

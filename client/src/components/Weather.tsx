@@ -45,11 +45,11 @@ export const Weather = () => {
   }, []);
 
   return (
-    <div className="text-white bg-gradient-to-t from-green-400 to-blue-500 hover:from-green-400 hover:to-yellow-500  rounded flex flex-col items-center justify-center h-full ">
+    <div className="text-white bg-gradient-to-t from-green-400 to-blue-500 hover:from-green-400 hover:to-yellow-500  rounded flex flex-col items-center justify-center h-44 ">
       <h1 className="font-bold text-lg  text-center">{cityName}</h1>
       <span className="text-3xl my-1">{temperature.toFixed()} °C</span>
       <span className="text-xs">{tempMin.toFixed()}°C / {tempMax.toFixed()}°C</span>
-      <img className="w-15" src={urlIcon} />
+      <img className="w-12 h-12" src={urlIcon} />
       <span className="mb-1 font-bold">{weather}</span>
       
     </div>

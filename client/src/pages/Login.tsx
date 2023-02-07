@@ -7,6 +7,7 @@ import { AiOutlineSetting, AiOutlineLogin } from "react-icons/ai";
 
 import { AuthContext } from "../contexts/auth";
 import { NavBar } from "../components/NavBar/NavBar";
+import { Footer } from "../components/Footer";
 
 export const Login = () => {
   const { authenticated, doLogin, error } = useContext(AuthContext);
@@ -39,13 +40,13 @@ export const Login = () => {
         <div className="flex flex-col justify-center items-center gap-24  w-4/5 ">
           <div className="w-auto text-white text-center flex flex-col gap-9">
             <div className="flex justify-center items-center gap-9">
-              <IoStorefrontSharp size={100} />
-              <h1 className="font-bold font-playfair text-6xl">Smart Store</h1>
+              <IoStorefrontSharp className="w-10 h-10  sm:w-16 sm:h-16" />
+              <h1 className=" font-bold font-playfair  text-3xl sm:text-4xl md:text-4xl lg:text-6xl">Smart Store</h1>
             </div>
           </div>
 
-          <div className="flex flex-col justify-center  items-center  h-auto w-[500px]  px-6 py-6 rounded-md gap-2">
-            <h1 className="text-2xl font-bold mb-4 text-white">LOGIN</h1>
+          <div className="flex flex-col justify-center  items-center  h-auto w-[300px] sm:w-[400px] md:w-[500px]  rounded-md gap-2">
+            <h1 className="text-xl sm:text-2xl font-bold mb-4 text-white">LOGIN</h1>
 
             <div className="flex items-center flex-col w-full gap-4">
               <input
@@ -71,26 +72,27 @@ export const Login = () => {
             >
               Entrar
             </button>
-            <span className="text-center text-white mt-2">
+            <span className="text-sm sm:text-base text-center text-white mt-2">
               Ainda não possui uma conta?
               <Link to="/register" className="text-red-500">
                 {" "}
                 Registre-se{" "}
               </Link>
             </span>
-            <span className="text-center text-white ">
+            <span className="text-sm sm:text-base text-center text-white ">
               Problemas com login ?
               <a className="text-red-500"> Recupere sua conta.</a>
             </span>
 
             {error && (
-              <span className="bg-red-500 p-1 text-white rounded ">
+              <span className="bg-red-500 p-1 text-white rounded mt-2">
                 * {error} *
               </span>
             )}
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

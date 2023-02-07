@@ -10,6 +10,7 @@ import { ImBoxAdd } from "react-icons/im";
 import { NavBar } from "../NavBar/NavBar";
 import { Menu } from "../Menu";
 import uploadapi from "../../data/api";
+import { Footer } from "../Footer";
 
 const schema = object({
   name: string()
@@ -97,17 +98,17 @@ export const RegisterProducts = () => {
         <Menu />
         <div className="w-full flex flex-col items-center">
           <NavBar />
-          <div className="flex  justify-center items-center h-auto  bg-grayBG w-4/5 my-2 p-12">
-            <div className="flex bg-white w-1/2 flex-col items-center h-auto rounded-md p-6">
+          <div className="flex  justify-center items-center h-screen  bg-grayBG w-4/5 my-2 p-2 sm:p-6 md:p-12">
+            <div className="flex bg-white w-full sm:w-3/5  flex-col items-center h-auto rounded p-6">
               <div className="mb-6">
                 <div className="flex justify-center items-center flex-col gap-3">
-                  <ImBoxAdd size={60} className=" text-orange-500" />
-                  <h1 className="font-bold text-2xl">Registre um Produto</h1>
+                  <ImBoxAdd  className=" text-orange-500 w-10 h-10  lg:w-14 lg:h-14 " />
+                  <h1 className="font-bold text-sm sm:text-xl md:text-2xl text-center">Registre um Produto</h1>
                 </div>
               </div>
 
               <form
-                className="flex flex-col w-4/5 "
+                className="flex flex-col w-full lg:w-4/5 text-xs lg:text-base "
                 encType="multipart/form-data"
                 onSubmit={handleSubmit(handleClickSubimit)}
               >
@@ -178,9 +179,9 @@ export const RegisterProducts = () => {
 
                 <input
                   type="file"
-                  className="block w-full text-sm border rounded drop-shadow focus:outline-none mb-6 file:mr-4 file:py-2 file:px-4
+                  className="block w-full text-sm border rounded drop-shadow focus:outline-none mb-6  file:py-1 file:px-0.5 lg:file:mr-4 lg:file:py-2 lg:file:px-4
                   file:rounded file:border-0
-                  file:text-sm file:font-semibold
+                  file:px-4file:text-sm file:text-xs file:font-semibold
                   file:bg-orange-500 file:text-white
                   hover:file:bg-orange-400
                   file:cursor-pointer 
@@ -210,7 +211,7 @@ export const RegisterProducts = () => {
                 <div className="flex justify-center items-center">
                   <button
                     type="submit"
-                    className=" border text-white font-bold text-xl rounded-md drop-shadow bg-orange-500 hover:bg-orange-400 w-1/2 p-2"
+                    className=" border text-white font-bold text-xs lg:text-xl rounded-md drop-shadow bg-orange-500 hover:bg-orange-400 w-4/5 lg:w-1/2 p-2"
                   >
                     Cadastrar
                   </button>
@@ -242,6 +243,7 @@ export const RegisterProducts = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };
